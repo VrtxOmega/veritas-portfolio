@@ -64,6 +64,17 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(typeWriter, 50);
       }
     }
+
+    cliInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const val = cliInput.value.trim();
+        if (val) {
+          window.location.href = `mailto:engineer@veritas-lab.dev?subject=Portfolio Outreach&body=${encodeURIComponent(val)}`;
+          cliInput.value = '';
+          cliInput.setAttribute('placeholder', 'Message sent to mail client...');
+        }
+      }
+    });
   }
 
   // 4. Parallax effect for the 3D rotating hologram ring
