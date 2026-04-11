@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'Enter') {
         const val = cliInput.value.trim();
         if (val) {
-          window.location.href = `mailto:engineer@veritas-lab.dev?subject=Portfolio Outreach&body=${encodeURIComponent(val)}`;
+          window.location.href = `mailto:VrtxOmega@pm.me?subject=Portfolio Outreach&body=${encodeURIComponent(val)}`;
           cliInput.value = '';
           cliInput.setAttribute('placeholder', 'Message sent to mail client...');
         }
