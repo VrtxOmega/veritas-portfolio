@@ -870,7 +870,6 @@ footer {
 @media (max-width: 768px) {
   .hero-content h1 { font-size: 3rem; }
   .header { padding: 1.5rem 2rem; }
-  nav { display: none; } /* Could add hamburger */
+  nav { display: none; }
 }
-. p r o j e c t - s c r e e n s h o t   {   w i d t h :   1 0 0 % ;   h e i g h t :   1 0 0 % ;   o b j e c t - f i t :   c o v e r ;   b o r d e r - r a d i u s :   4 p x ;   m a s k - i m a g e :   l i n e a r - g r a d i e n t ( t o   r i g h t ,   r g b a ( 0 , 0 , 0 , 1 )   8 0 % ,   r g b a ( 0 , 0 , 0 , 0 )   1 0 0 % ) ;   - w e b k i t - m a s k - i m a g e :   l i n e a r - g r a d i e n t ( t o   r i g h t ,   r g b a ( 0 , 0 , 0 , 1 )   8 0 % ,   r g b a ( 0 , 0 , 0 , 0 )   1 0 0 % ) ;   }  
- 
+.project-screenshot { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; mask-image: linear-gradient(to right, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%); -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%); }
