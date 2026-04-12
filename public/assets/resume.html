@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RJ Lopez — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  @page {
+    size: letter;
+    margin: 0;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0c0c0c;
+    --surface: #141414;
+    --surface-alt: #1a1a1a;
+    --gold: #c9a84c;
+    --gold-dim: rgba(201, 168, 76, 0.15);
+    --gold-glow: rgba(201, 168, 76, 0.06);
+    --text: #e8e2d9;
+    --text-secondary: #a0998e;
+    --muted: #6b6660;
+    --border: #252525;
+    --font-body: 'Inter', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  html {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 11px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    width: 8.5in;
+    min-height: 11in;
+    margin: 0 auto;
+    padding: 0.55in 0.6in;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Corner accents */
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100px; height: 100px;
+    border-top: 1px solid var(--gold);
+    border-left: 1px solid var(--gold);
+    opacity: 0.3;
+  }
+  .page::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 100px; height: 100px;
+    border-bottom: 1px solid var(--gold);
+    border-right: 1px solid var(--gold);
+    opacity: 0.3;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 14px;
+  }
+  .header-left h1 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .header-left h1 span {
+    color: var(--gold);
+  }
+  .header-left .tagline {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .header-right {
+    text-align: right;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+  .header-right a {
+    color: var(--text-secondary);
+    text-decoration: none;
+  }
+  .header-right .gold {
+    color: var(--gold);
+  }
+
+  /* ─── SUMMARY ─── */
+  .summary {
+    background: var(--gold-glow);
+    border-left: 2px solid var(--gold);
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    font-size: 10.5px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+  .summary strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .summary em {
+    color: var(--gold);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  /* ─── STATS ROW ─── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: var(--font-mono);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 7.5px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--muted);
+  }
+
+  /* ─── SECTION HEADERS ─── */
+  .section-title {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--gold);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::before {
+    content: '▸';
+    font-size: 8px;
+  }
+
+  /* ─── KEY PROJECTS ─── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .project {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    transition: border-color 0.2s;
+  }
+  .project-name {
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .project-desc {
+    font-size: 9.5px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  .project-metric {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--gold);
+    margin-top: 4px;
+  }
+
+  /* ─── EXPERIENCE ─── */
+  .job {
+    margin-bottom: 12px;
+    page-break-inside: avoid;
+  }
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2px;
+  }
+  .job-title {
+    font-weight: 700;
+    font-size: 11.5px;
+    color: var(--text);
+  }
+  .job-date {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .job-company {
+    font-size: 10px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+  }
+  .job-bullets {
+    list-style: none;
+    padding: 0;
+  }
+  .job-bullets li {
+    font-size: 10px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    padding-left: 12px;
+    position: relative;
+    margin-bottom: 2px;
+  }
+  .job-bullets li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* ─── SKILLS ─── */
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 18px;
+  }
+  .skill {
+    font-family: var(--font-mono);
+    font-size: 8.5px;
+    padding: 3px 9px;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    letter-spacing: 0.3px;
+  }
+  .skill.gold {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: var(--gold-dim);
+  }
+
+  /* ─── CERTIFICATIONS ─── */
+  .certs-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-bottom: 18px;
+  }
+  .cert {
+    font-size: 9.5px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .cert::before {
+    content: '✓';
+    color: var(--gold);
+    font-size: 9px;
+    font-weight: 700;
+  }
+
+  /* ─── EDUCATION ─── */
+  .edu {
+    font-size: 10px;
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+  }
+  .edu strong {
+    color: var(--text);
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+  }
+  .footer .gold { color: var(--gold); }
+
+  /* ─── PRINT ─── */
+  @media print {
+    body { background: var(--bg); }
+    .page { padding: 0.45in 0.5in; }
+  }
+
+  /* ─── SCREEN: no-print button ─── */
+  .print-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--gold);
+    color: var(--bg);
+    border: none;
+    padding: 12px 24px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    z-index: 100;
+  }
+  @media print {
+    .print-btn { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">SAVE AS PDF</button>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <h1>RJ <span>Lopez</span></h1>
+      <div class="tagline">Full-Stack Developer · AI Systems Builder</div>
+    </div>
+    <div class="header-right">
+      <div class="gold">VrtxOmega@pm.me</div>
+      <div>github.com/VrtxOmega</div>
+      <div>Bethalto, IL · Remote</div>
+      <div>Authorized to work in the US</div>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="summary">
+    Self-taught full-stack developer with <em>33 shipped applications</em> built in 12 weeks.
+    I design and build complete systems — desktop apps, web platforms, AI integrations, and mobile —
+    using <strong>Python, Electron, React Native, Flask</strong>, and cloud deployment.
+    My background is unconventional: field service, cleanroom certification, restaurant management.
+    That history built the instincts I code with — root cause analysis, systems thinking, working fast under pressure with no margin for error.
+    <em>I don't wait for permission to build.</em>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-num">33</div>
+      <div class="stat-label">Apps Shipped</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">431</div>
+      <div class="stat-label">Test Specs</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">12</div>
+      <div class="stat-label">Weeks Active</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">0%</div>
+      <div class="stat-label">Error Rate</div>
+    </div>
+  </div>
+
+  <!-- KEY PROJECTS -->
+  <div class="section-title">Flagship Systems</div>
+  <div class="projects-grid">
+    <div class="project">
+      <div class="project-name">VERITAS Core</div>
+      <div class="project-desc">Live AI verification oracle on Cloud Run — Gemini, Stripe billing, HuggingFace dataset, Zenodo DOI</div>
+      <div class="project-metric">▸ Published Research Artifact</div>
+    </div>
+    <div class="project">
+      <div class="project-name">Omega Brain MCP</div>
+      <div class="project-desc">Python MCP server for AI agent provenance — S.E.A.L. hash chain, 10-gate deterministic pipeline</div>
+      <div class="project-metric">▸ 82 Test Suites Passing</div>
+    </div>
+    <div class="project">
+      <div class="project-name">AEGIS Protect</div>
+      <div class="project-desc">System security & hardware health platform — direct-to-metal telemetry, automated remediation</div>
+      <div class="project-metric">▸ 73,762 Adversarial Events / 0% Failure</div>
+    </div>
+    <div class="project">
+      <div class="project-name">OmegaWallet</div>
+      <div class="project-desc">Cryptographic ledger system for autonomous agent transactions — immutable state, signed operations</div>
+      <div class="project-metric">▸ 356 Local Test Suites</div>
+    </div>
+    <div class="project">
+      <div class="project-name">Sovereign Media</div>
+      <div class="project-desc">AIO desktop media platform — Electron + React Native mobile sync, offline-first architecture</div>
+      <div class="project-metric">▸ Cross-Platform Deployed</div>
+    </div>
+    <div class="project">
+      <div class="project-name">Sovereign Bridge</div>
+      <div class="project-desc">Zero-cloud PC ↔ Mobile sync system — WebSocket tunneling, E2EE clipboard/file transfer</div>
+      <div class="project-metric">▸ Zero Cloud Dependencies</div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section-title">Work Experience</div>
+
+  <div class="job">
+    <div class="job-header">
+      <div class="job-title">Independent Software Developer</div>
+      <div class="job-date">Jan 2026 — Present</div>
+    </div>
+    <div class="job-company">VERITAS Ecosystem · Self-Employed · Bethalto, IL</div>
+    <ul class="job-bullets">
+      <li>Designed and shipped 33 production applications in 12 weeks as a self-taught developer</li>
+      <li>Built full-stack systems spanning desktop (Electron), web (React, Flask), mobile (React Native), and cloud (GCP)</li>
+      <li>Authored 431 test specifications across the portfolio with zero production error rate</li>
+      <li>Published research artifacts to Zenodo (DOI) and HuggingFace; contributed 21 test specs to Anthropic Cookbooks</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-header">
+      <div class="job-title">Field Service Technician II</div>
+      <div class="job-date">Oct 2024 — Feb 2026</div>
+    </div>
+    <div class="job-company">Technical Safety Services · St. Louis, MO</div>
+    <ul class="job-bullets">
+      <li>Certified Class II BSCs, Laminar Flow Hoods, Chemical Fume Hoods, and Isolators per NSF/ANSI 49, ISO 14644, USP ⟨797⟩/⟨800⟩</li>
+      <li>Executed HEPA/ULPA filter integrity testing, particle counting, pressurization monitoring, and airflow visualization</li>
+      <li>Generated audit-ready certification reports meeting GMP and GDP standards</li>
+      <li>Operated in BSL-2 and BSL-3 environments under strict biohazard and chemical protocols</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-header">
+      <div class="job-title">Quality Control Inspector</div>
+      <div class="job-date">Jul 2023 — Mar 2024</div>
+    </div>
+    <div class="job-company">Blount Fine Foods · Fall River, MA</div>
+    <ul class="job-bullets">
+      <li>Led quality audits and inline adjustments to meet production specifications; investigated and corrected customer complaints</li>
+      <li>Coordinated specs and cooking instruction changes for Right First Time initiatives with cross-functional teams</li>
+      <li>HACCP trained; enforced allergen control programs, GMPs, and SOPs across production floor</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-header">
+      <div class="job-title">Thermal Spray Technician</div>
+      <div class="job-date">Feb 2021 — Jun 2023</div>
+    </div>
+    <div class="job-company">HTS Coatings · Madison, IL</div>
+    <ul class="job-bullets">
+      <li>Programmed and operated manual, semi-automatic, and robotic spray systems; created spray recipes and sequences</li>
+      <li>Inspected surfaces using micrometers, calipers, elcometers, and profilometers for compliance with specifications</li>
+      <li>Cross-trained technicians and drove continuous improvement of cell processes</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-header">
+      <div class="job-title">Delivery Driver — Home Medical Equipment</div>
+      <div class="job-date">2024</div>
+    </div>
+    <div class="job-company">Enos Home Medical · New Bedford, MA</div>
+    <ul class="job-bullets">
+      <li>Delivered and installed medical equipment (beds, oxygen systems); responded to emergency calls on-call</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-header">
+      <div class="job-title">Maintenance Technician</div>
+      <div class="job-date">May 2020 — Feb 2021</div>
+    </div>
+    <div class="job-company">IMC Outdoor Living · Godfrey, IL</div>
+    <ul class="job-bullets">
+      <li>Preventative and emergency maintenance across industrial machinery; welding, fabrication, electrical, HVAC, plumbing</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-header">
+      <div class="job-title">Restaurant Manager</div>
+      <div class="job-date">Nov 2017 — Sep 2019</div>
+    </div>
+    <div class="job-company">Pizza Hut · Godfrey, IL</div>
+    <ul class="job-bullets">
+      <li>Full P&L ownership, staffing, inventory control, and customer satisfaction for store operations</li>
+    </ul>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section-title">Technical Skills</div>
+  <div class="skills-grid">
+    <span class="skill gold">Python</span>
+    <span class="skill gold">JavaScript</span>
+    <span class="skill gold">Electron / Node.js</span>
+    <span class="skill gold">React Native</span>
+    <span class="skill">Flask</span>
+    <span class="skill">HTML / CSS</span>
+    <span class="skill">SQLite / PostgreSQL</span>
+    <span class="skill">Git / GitHub</span>
+    <span class="skill">REST APIs</span>
+    <span class="skill">WebSockets / IPC</span>
+    <span class="skill">GCP Cloud Run</span>
+    <span class="skill">Kotlin / Android</span>
+    <span class="skill">C++ / Emscripten</span>
+    <span class="skill">Webpack / Vite</span>
+    <span class="skill">Agile</span>
+    <span class="skill gold">AI Integration</span>
+    <span class="skill gold">Mathematical AI Bounding</span>
+    <span class="skill">Prompt Engineering</span>
+    <span class="skill">System Architecture</span>
+    <span class="skill">Root Cause Analysis</span>
+    <span class="skill">ISO 9001</span>
+    <span class="skill">Technical Documentation</span>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="section-title">Certifications</div>
+  <div class="certs-row">
+    <span class="cert">Forklift Certification</span>
+    <span class="cert">CPR Certified</span>
+    <span class="cert">ServSafe Food Manager</span>
+    <span class="cert">Non-CDL Class C</span>
+    <span class="cert">Electric Pallet Jack</span>
+    <span class="cert">Driver's License</span>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section-title">Education</div>
+  <div class="edu">
+    <strong>Taunton High School</strong> · Taunton, MA · Graduated 2008<br>
+    Self-directed technical education: full-stack development, AI systems, cryptographic verification
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>VERITAS Ω · V_SYS_1.3.1</span>
+    <span>github.com/VrtxOmega</span>
+    <span class="gold">VrtxOmega@pm.me</span>
+  </div>
+
+</div>
+
+</body>
+</html>
