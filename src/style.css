@@ -214,11 +214,13 @@ nav {
 .hero-actions {
   display: flex;
   gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.8rem;
   padding: 1rem 2rem;
   text-decoration: none;
@@ -227,6 +229,7 @@ nav {
   letter-spacing: 1px;
   font-size: 0.9rem;
   border-radius: 6px;
+  white-space: nowrap;
   transition: all 0.3s ease;
 }
 
