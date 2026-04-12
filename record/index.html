@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RJ Lopez — VERITAS Build Record</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --card-bg: #131313;
+    --accent: #c9a84c;
+    --text: #e8e2d9;
+    --muted: #888888;
+    --border: #2a2a2a;
+    --font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    margin: 0;
+    padding: 3rem 2rem;
+    line-height: 1.4;
+    font-size: 13px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 2rem;
+  }
+  h1 {
+    color: var(--text);
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: 0px;
+  }
+  .subtitle {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .header-right {
+    text-align: right;
+    color: var(--muted);
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  a:hover {
+    color: var(--text);
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 3rem 0;
+  }
+  .stat-card {
+    background-color: var(--card-bg);
+    padding: 1.25rem 1.5rem;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+  }
+  .stat-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+  }
+  .stat-value {
+    font-size: 2.2rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .divider-header {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 4rem 0 2rem 0;
+  }
+  .divider-header::before,
+  .divider-header::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--border);
+  }
+  .divider-header::before { margin-right: 1.5rem; }
+  .divider-header::after { margin-left: 1.5rem; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.85rem;
+  }
+  th, td {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th {
+    color: var(--muted);
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    padding-bottom: 0.75rem;
+  }
+  tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .tag {
+    display: inline-block;
+    padding: 3px 8px;
+    font-size: 0.65rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .tag.live { background-color: rgba(110, 206, 110, 0.15); color: #6ece6e; }
+  .tag.stable { background-color: rgba(110, 158, 206, 0.15); color: #6e9ece; }
+  
+  .project-name {
+    color: var(--text);
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+  }
+  .project-desc {
+    color: var(--muted);
+    font-size: 0.75rem;
+  }
+  .metric {
+    color: var(--accent);
+  }
+  .ref-link {
+    color: var(--muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    justify-content: flex-end;
+  }
+  .ref-link:hover {
+    color: var(--text);
+  }
+  .ref-link::after {
+    content: "↗";
+    font-size: 1.1em;
+  }
+
+  .creds-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .cred-card {
+    background-color: var(--card-bg);
+    border-radius: 6px;
+    padding: 1.5rem;
+    border: 1px solid transparent;
+    transition: border-color 0.2s;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+  .cred-card:hover {
+    border-color: var(--border);
+  }
+  .cred-label {
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+  }
+  .cred-title {
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  .cred-desc {
+    font-size: 0.8rem;
+    color: var(--accent);
+    margin-bottom: 0;
+  }
+  
+  .pull-quote {
+    font-size: 1.2rem;
+    color: var(--accent);
+    line-height: 1.6;
+    margin: 4rem 0;
+    border-left: 2px solid var(--accent);
+    padding-left: 1.5rem;
+    font-style: italic;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+    font-size: 0.85rem;
+    color: #888;
+  }
+  .footer-eth {
+    color: var(--accent);
+  }
+
+  @media (max-width: 768px) {
+    header { flex-direction: column; gap: 1.5rem; }
+    .header-right { text-align: left; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .creds-grid { grid-template-columns: 1fr; }
+    
+    table, thead, tbody, th, td, tr { display: block; }
+    thead tr { position: absolute; top: -9999px; left: -9999px; }
+    tr { padding: 1rem 0; border-bottom: 1px dashed var(--border);}
+    td { border: none; padding: 0.25rem 0; }
+    td:nth-child(4) { text-align: left; justify-content: flex-start; }
+    .ref-link { justify-content: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div>
+      <h1>RJ Lopez</h1>
+      <div class="subtitle">Audit-chain engineer · Self-taught · Field service → systems builder</div>
+    </div>
+    <div class="header-right">
+      <a href="https://github.com/VRTXOmega" target="_blank">github.com/VRTXOmega</a>
+      <a href="https://twitter.com/RJLopezAI" target="_blank">@RJLopezAI</a>
+      <span style="color: var(--accent);">0x36c5...5a7d</span>
+    </div>
+  </header>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-label">WEEKS ACTIVE</div>
+      <div class="stat-value counter" data-target="12">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">APPS SHIPPED</div>
+      <div class="stat-value counter" data-target="33">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">TEST SPECS BUILT</div>
+      <div class="stat-value counter" data-target="431">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">EXTERNAL PROOFS</div>
+      <div class="stat-value counter" data-target="2">0</div>
+    </div>
+  </div>
+
+  <div class="divider-header">
+    <span>VERIFIED WORK RECORD</span>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%;">STATUS</th>
+        <th style="width: 45%;">PROJECT</th>
+        <th style="width: 30%;">KEY METRIC</th>
+        <th style="width: 10%; text-align: right;">REF</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tag live">LIVE</span></td>
+        <td>
+          <div class="project-name">VERITAS Core</div>
+          <div class="project-desc">Claim Verification Framework</div>
+        </td>
+        <td class="metric">Core Logic Architecture</td>
+        <td style="text-align: right;"><a href="https://github.com/VrtxOmega/veritas" target="_blank" class="ref-link">GH</a></td>
+      </tr>
+      <tr>
+        <td><span class="tag live">LIVE</span></td>
+        <td>
+          <div class="project-name">Omega Brain MCP</div>
+          <div class="project-desc">AI provenance + trust layer · SEAL hash chain · Cortex gate</div>
+        </td>
+        <td class="metric">9 Local Test Suites</td>
+        <td style="text-align: right;"><a href="https://github.com/VrtxOmega/omega-brain-mcp" target="_blank" class="ref-link">GH</a></td>
+      </tr>
+      <tr>
+        <td><span class="tag stable">STABLE</span></td>
+        <td>
+          <div class="project-name">AEGIS Protect</div>
+          <div class="project-desc">System Security & Hardware Health Platform</div>
+        </td>
+        <td class="metric">8 Local Test Suites</td>
+        <td style="text-align: right;"><a href="https://github.com/VrtxOmega/Aegis" target="_blank" class="ref-link">GH</a></td>
+      </tr>
+      <tr>
+        <td><span class="tag stable">STABLE</span></td>
+        <td>
+          <div class="project-name">OmegaWallet</div>
+          <div class="project-desc">Local Desktop Financial Management</div>
+        </td>
+        <td class="metric">356 Local Test Suites</td>
+        <td style="text-align: right;"><a href="https://github.com/VrtxOmega/OmegaWallet" target="_blank" class="ref-link">GH</a></td>
+      </tr>
+      <tr>
+        <td><span class="tag stable">STABLE</span></td>
+        <td>
+          <div class="project-name">Sovereign Bridge</div>
+          <div class="project-desc">Absolute E2EE Zero-Cloud Data Synchronization</div>
+        </td>
+        <td class="metric">Cross-Platform Sync</td>
+        <td style="text-align: right;"><a href="https://github.com/VrtxOmega/SovereignBridge" target="_blank" class="ref-link">GH</a></td>
+      </tr>
+      <tr>
+        <td><span class="tag live">LIVE</span></td>
+        <td>
+          <div class="project-name">VERITAS Credit Repair AI</div>
+          <div class="project-desc">Interactive Deployed Application</div>
+        </td>
+        <td class="metric">Public Deployment</td>
+        <td style="text-align: right;"><a href="https://vrtxomega.github.io/veritas_credit_repair" target="_blank" class="ref-link"></a></td>
+      </tr>
+      <tr>
+        <td><span class="tag stable">STABLE</span></td>
+        <td>
+          <div class="project-name">Sovereign Media</div>
+          <div class="project-desc">AIO Desktop Media Player (Audio/Video/Epub)</div>
+        </td>
+        <td class="metric">Full Offline Indexing</td>
+        <td style="text-align: right;"><a href="https://github.com/VrtxOmega/SovereignMedia" target="_blank" class="ref-link">GH</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="divider-header">
+    <span>EXTERNAL VERIFIABLE CREDENTIALS</span>
+  </div>
+
+  <div class="creds-grid">
+    <a href="https://doi.org/10.5281/zenodo.19194080" target="_blank" class="cred-card">
+      <div class="cred-label">ZENODO</div>
+      <div class="cred-title">Research Object / DOI</div>
+      <div class="cred-desc">10.5281/zenodo.19194080</div>
+    </a>
+    <a href="https://huggingface.co/datasets/VeritasOmega/veritas-claim-verification-dataset" target="_blank" class="cred-card">
+      <div class="cred-label">HUGGING FACE</div>
+      <div class="cred-title">Dataset Artifact</div>
+      <div class="cred-desc">veritas-claim-verification</div>
+    </a>
+    <a href="https://github.com/VrtxOmega/claude-cookbooks" target="_blank" class="cred-card">
+      <div class="cred-label">GITHUB</div>
+      <div class="cred-title">Anthropic Cookbooks</div>
+      <div class="cred-desc">21 Test Specs Built</div>
+    </a>
+  </div>
+
+  <div class="pull-quote">
+    "The 12% where being confidently wrong costs more than the verification. That's where I build."
+  </div>
+
+  <footer>
+    <div>CRYPTOGRAPHIC IDENTITY</div>
+    <div class="footer-eth">ETH: 0x36c54AF7aCe58E04eebc1cc593547d02803e5a7d</div>
+  </footer>
+</div>
+
+<script>
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  function animateCounters() {
+    const counters = document.querySelectorAll('.counter');
+    const duration = 1200; 
+
+    counters.forEach(counter => {
+      const target = parseFloat(counter.getAttribute('data-target'));
+      const suffix = counter.getAttribute('data-suffix') || '';
+      const startTime = performance.now();
+      
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = easeOutCubic(progress);
+        
+        const val = Math.floor(ease * target);
+
+        counter.innerText = val + suffix;
+        
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          counter.innerText = target + suffix;
+        }
+      }
+      requestAnimationFrame(update);
+    });
+  }
+
+  window.addEventListener('load', animateCounters);
+</script>
+</body>
+</html>
