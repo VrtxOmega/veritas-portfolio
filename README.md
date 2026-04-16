@@ -14,7 +14,7 @@ VERITAS Universe is a collection of independently deployable components that sha
 
 ## What It Is
 
-- A static GitHub Pages site (`index.html` + Vite build) that acts as a navigable index of the VERITAS Universae components.
+- A static GitHub Pages site (`index.html` + Vite build) that acts as a navigable index of the VERITAS Universe components.
 - A public-facing surface demonstrating the engineering record: architecture decisions, threat models, and operational constraints of each ecosystem component.
 - Built with Vite (no framework dependency). Deployed automatically on push to `master` via GitHub Actions.
 
