@@ -2,6 +2,8 @@
 
 > Public evidence index for the VERITAS Universe: a deterministic, local-first, zero-trust software ecosystem built and operated by VrtxOmega.
 
+**Live Portfolio:** https://vrtxomega.github.io/veritas-portfolio/
+
 ---
 
 ## Ecosystem Canon
@@ -71,6 +73,8 @@ This site is deployed to **GitHub Pages** automatically on every push to `master
 4. Uploads `./dist` as a Pages artifact and deploys it.
 
 No manual deployment step is required. The live URL is published in the repo's About sidebar.
+
+**Live URL:** https://vrtxomega.github.io/veritas-portfolio/
 
 ---
 
