@@ -1,12 +1,12 @@
 # VERITAS Ω — Engineering the Sovereign Stack
 
-> Public evidence index for the VERITAS Universae: a deterministic, local-first, zero-trust software ecosystem built and operated by VrtxOmega.
+> Public evidence index for the VERITAS Universe: a deterministic, local-first, zero-trust software ecosystem built and operated by VrtxOmega.
 
 ---
 
 ## Ecosystem Canon
 
-VERITAS Universae is a collection of independently deployable components that share one invariant: no capability is claimed without a corresponding implementation that can be audited, run, and broken. Every component operates under an explicit trust boundary; nothing is implicitly trusted by position or label. The portfolio site is the public-facing index — its job is to surface proof, not pitch. Local-first posture means each component runs fully offline by default; network access is opt-in and scoped. The sovereign stack is not a product — it is a set of constraints that produce predictable, auditable behavior at each integration point.
+VERITAS Universe is a collection of independently deployable components that share one invariant: no capability is claimed without a corresponding implementation that can be audited, run, and broken. Every component operates under an explicit trust boundary; nothing is implicitly trusted by position or label. The portfolio site is the public-facing index — its job is to surface proof, not pitch. Local-first posture means each component runs fully offline by default; network access is opt-in and scoped. The sovereign stack is not a product — it is a set of constraints that produce predictable, auditable behavior at each integration point.
 
 ---
 
