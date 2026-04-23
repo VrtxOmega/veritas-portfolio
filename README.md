@@ -2,6 +2,13 @@
 
 > Public evidence index for the VERITAS Universe: a deterministic, local-first, zero-trust software ecosystem built and operated by VrtxOmega.
 
+<div align="center">
+  <br>
+  <a href="https://github.com/VrtxOmega/VERITAS-Omega-CODE">
+    <img src="https://img.shields.io/badge/VERITAS--Ω--CODE-v2.0--SEALED-d4af37?style=for-the-badge&colorA=09090b" alt="VERITAS Ω-CODE v2.0 SEALED" />
+  </a>
+</div>
+
 **Live Portfolio:** https://vrtxomega.github.io/veritas-portfolio/
 
 ---
@@ -11,6 +18,15 @@
 VERITAS Universe is a collection of independently deployable components that share one invariant: no capability is claimed without a corresponding implementation that can be audited, run, and broken. Every component operates under an explicit trust boundary; nothing is implicitly trusted by position or label. The portfolio site is the public-facing index — its job is to surface proof, not pitch. Local-first posture means each component runs fully offline by default; network access is opt-in and scoped. The sovereign stack is not a product — it is a set of constraints that produce predictable, auditable behavior at each integration point.
 
 ---
+
+## Conclusion
+The Veritas Portfolio platform is committed to providing the highest level of service to our users. We are continuously improving and updating our platform to meet your needs. If you have any questions or feedback, please don't hesitate to reach out to our support team.
+
+---
+
+<div align="center">
+  <sub><b>VERITAS</b> Ω-CODE v2.0 Standardized | <a href="https://github.com/VrtxOmega/VERITAS-Omega-CODE">Verification Protocol</a></sub>
+</div>
 
 ## What It Is
 
