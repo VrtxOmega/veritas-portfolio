@@ -1,0 +1,56 @@
+{
+  "project": "veritas-portfolio",
+  "version": "1.3.1",
+  "commit": "HEAD",
+  "primitives": [
+    { "name": "APPS_SHIPPED", "domain": { "low": 0, "high": 1000, "inclusive_low": true, "inclusive_high": true } },
+    { "name": "WEEKS_ACTIVE", "domain": { "low": 0, "high": 5000, "inclusive_low": true, "inclusive_high": true } }
+  ],
+  "operators": [],
+  "regimes": [],
+  "boundaries": [
+    {
+      "name": "apps_match",
+      "constraint": { "op": "=", "left": "APPS_SHIPPED", "right": 33 }
+    },
+    {
+      "name": "weeks_match",
+      "constraint": { "op": "=", "left": "WEEKS_ACTIVE", "right": 14 }
+    }
+  ],
+  "loss_models": [],
+  "evidence": [
+    {
+      "id": "1111111111111111111111111111111111111111111111111111111111111111",
+      "variable": "APPS_SHIPPED",
+      "value": { "x": 33, "units": "count", "kind": "point" },
+      "timestamp": "2026-04-23T07:38:00Z",
+      "method": { "protocol": "github_api_pagination", "parameters": {}, "repeatable": true },
+      "provenance": { "source_id": "github_api", "acquisition": "measurement", "tier": "A" }
+    },
+    {
+      "id": "2222222222222222222222222222222222222222222222222222222222222222",
+      "variable": "APPS_SHIPPED",
+      "value": { "x": 33, "units": "count", "kind": "point" },
+      "timestamp": "2026-04-23T07:38:00Z",
+      "method": { "protocol": "user_verification", "parameters": {}, "repeatable": false },
+      "provenance": { "source_id": "user_assertion", "acquisition": "statement", "tier": "B" }
+    },
+    {
+      "id": "3333333333333333333333333333333333333333333333333333333333333333",
+      "variable": "WEEKS_ACTIVE",
+      "value": { "x": 14, "units": "weeks", "kind": "point" },
+      "timestamp": "2026-04-23T07:38:00Z",
+      "method": { "protocol": "user_verification", "parameters": {}, "repeatable": false },
+      "provenance": { "source_id": "user_assertion", "acquisition": "statement", "tier": "A" }
+    },
+    {
+      "id": "4444444444444444444444444444444444444444444444444444444444444444",
+      "variable": "WEEKS_ACTIVE",
+      "value": { "x": 14, "units": "weeks", "kind": "point" },
+      "timestamp": "2026-04-23T07:38:00Z",
+      "method": { "protocol": "system_estimation", "parameters": {}, "repeatable": true },
+      "provenance": { "source_id": "github_api", "acquisition": "measurement", "tier": "B" }
+    }
+  ]
+}
