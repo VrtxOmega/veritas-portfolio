@@ -1,0 +1,94 @@
+{
+  "version": "1.0.0",
+  "timestamp": "2026-04-30T18:49:47.727Z",
+  "target": {
+    "name": "veritas-portfolio",
+    "repo": "/mnt/c/Veritas_Lab/veritas-portfolio",
+    "commitHash": "80cabe5c6ac04b9606eefa0676aaa5091cdc9249",
+    "branch": "master"
+  },
+  "environment": {
+    "nodeVersion": "v22.14.0",
+    "os": "linux",
+    "arch": "x64",
+    "ci": false
+  },
+  "dependencies": [
+    {
+      "name": "vite",
+      "version": "8.0.4",
+      "resolved": "/mnt/c/Veritas_Lab/veritas-portfolio/node_modules/vite",
+      "integrity": "fb8d749f21c7b7b9",
+      "suspicious": false,
+      "riskScore": 0.1
+    }
+  ],
+  "gates": [
+    {
+      "gate": "GIT_INTEGRITY",
+      "status": "FAIL",
+      "evidence": "Modified files: 1",
+      "durationMs": 131
+    },
+    {
+      "gate": "LOCKFILE",
+      "status": "PASS",
+      "evidence": "package-lock.json present",
+      "durationMs": 1
+    },
+    {
+      "gate": "DETERMINISTIC_BUILD",
+      "status": "PASS",
+      "evidence": "Build succeeded: npm run build",
+      "durationMs": 1522
+    },
+    {
+      "gate": "TEST_PASS",
+      "status": "FAIL",
+      "evidence": "Tests failed: npm error Missing script: \"test\"\nnpm error\nnpm error To see a list of scripts, run:\nnpm error   npm run\nnpm error A complete log of this run can be found in: /home/veritas/.npm/_logs/2026-04-30T18_49_",
+      "durationMs": 153
+    },
+    {
+      "gate": "LINT",
+      "status": "PASS",
+      "evidence": "npx passed",
+      "durationMs": 2728
+    }
+  ],
+  "adversarial": {
+    "totalPackages": 1,
+    "suspiciousPackages": 0,
+    "probes": [
+      {
+        "package": "vite",
+        "probe": "TYPO_SQUATTING",
+        "result": "PASS",
+        "detail": "Name heuristic clean"
+      },
+      {
+        "package": "vite",
+        "probe": "VERSION_ANOMALY",
+        "result": "PASS",
+        "detail": "Pinned: 8.0.4"
+      },
+      {
+        "package": "vite",
+        "probe": "METADATA_INTEGRITY",
+        "result": "PASS",
+        "detail": "Hash: fb8d749f21c7b7b9"
+      },
+      {
+        "package": "system",
+        "probe": "KIMI_REASONING",
+        "result": "INCONCLUSIVE",
+        "detail": "OLLAMA_CLOUD_API_KEY is not set. Skipping Kimi adversarial analysis."
+      }
+    ],
+    "overallRisk": 0
+  },
+  "seal": {
+    "chainHash": "34e84910e8c458a4515bdf19e4a9e71e6483a40a3c1e10af97744364887c6817",
+    "sequence": 117
+  },
+  "signature": "a96448647c10845af59e309886af6d1b9efd9a273ca9b40b43e7a7a34e429d88"
+}
