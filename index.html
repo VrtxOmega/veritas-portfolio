@@ -1,333 +1,649 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VERITAS Ω | RJ Lopez — Full-Stack & AI Developer</title>
-    <meta name="description" content="RJ Lopez (VrtxOmega). Sovereign full-stack & AI developer — 12+ deployed systems including Omega Brain MCP, Ollama-Omega MCP, Veritas Vault, and Aegis Protect. Available for remote contract or full-time roles." />
-    <meta property="og:title" content="VERITAS Ω | RJ Lopez — Full-Stack & AI Developer" />
-    <meta property="og:description" content="Sovereign full-stack & AI developer — 12+ deployed systems including Omega Brain MCP, Veritas Vault, and Aegis Protect. Available for remote roles." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://vrtxomega.github.io/veritas-portfolio/" />
-    <meta property="og:image" content="https://vrtxomega.github.io/veritas-portfolio/assets/projects/omega_brain_1776928479665.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="VERITAS Ω | RJ Lopez — Full-Stack & AI Developer" />
-    <meta name="twitter:description" content="Sovereign full-stack & AI developer — 12+ deployed systems. Available for remote roles." />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VERITAS Ω — Sovereign AI Infrastructure</title>
+  <meta name="description" content="VERITAS Omega Universe: sovereign AI governance, desktop operator platform, verifiable build pipeline, and security-forward crypto wallet. Built for trustless execution." />
+  <meta property="og:title" content="VERITAS Ω — Sovereign AI Infrastructure" />
+  <meta property="og:description" content="Sovereign AI governance, deterministic verification, and security-forward crypto. Built for trustless execution." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vrtxomega.github.io/veritas-portfolio/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET & ROOT ── */
+    :root {
+      --obsidian: #050505;
+      --surface: #0a0a0a;
+      --card: #121212;
+      --gold: #FFD700;
+      --gold-dim: #C9A84C;
+      --gold-bright: #FFD700;
+      --text: #e8e8e8;
+      --muted: #888;
+      --border: rgba(201,168,76,0.15);
+      --glow: rgba(201,168,76,0.10);
+      --red: #ff4444;
+      --green: #00cc66;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--obsidian);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--gold-bright); }
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <!-- Background Elements -->
-    <div class="particles-bg" id="particles-bg"></div>
-    <div class="cyber-grid"></div>
+    /* ── CANVAS PARTICLE BACKGROUND ── */
+    #particle-canvas {
+      position: fixed; top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      pointer-events: none; z-index: 0;
+    }
 
-    <header class="header blur-surface">
+    /* ── LAYOUT ── */
+    .wrapper { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(5,5,5,0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
+    header .wrapper { display: flex; justify-content: space-between; align-items: center; }
+    .logo {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Georgia', serif;
+      font-weight: 700; font-size: 1.25rem;
+    }
+    .logo .omega {
+      color: var(--gold-bright);
+      font-size: 1.6rem;
+      font-family: 'Georgia', serif;
+      text-shadow: 0 0 12px rgba(255,215,0,0.35);
+    }
+    nav { display: flex; gap: 20px; align-items: center; }
+    .nav-link { color: var(--muted); font-size: 0.82rem; font-weight: 500; }
+    .nav-link:hover { color: var(--gold); }
+    .nav-cta {
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 5px 14px; border-radius: 5px;
+      font-size: 0.82rem; font-weight: 600;
+    }
+    .nav-cta:hover { background: rgba(201,168,76,0.18); border-color: var(--gold); }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 0; position: relative; z-index: 1; }
+    .section-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; color: var(--gold-dim);
+      text-transform: uppercase; letter-spacing: 2.5px;
+      margin-bottom: 12px;
+    }
+    h2 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; }
+    h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; }
+    .subtitle { color: var(--muted); font-size: 1.02rem; max-width: 600px; margin-bottom: 36px; }
+
+    /* ── HERO ── */
+    .hero { padding: 100px 0 80px; text-align: center; }
+    .hero .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,215,0,0.04);
+      border: 1px solid rgba(255,215,0,0.18);
+      padding: 6px 14px; border-radius: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .hero .badge .dot {
+      width: 7px; height: 7px; background: var(--gold-bright);
+      border-radius: 50%; animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,215,0,0.6); }
+      50% { box-shadow: 0 0 0 10px rgba(255,215,0,0); }
+    }
+    .hero h1 {
+      font-size: 3.2rem; font-weight: 800; line-height: 1.15;
+      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-dim) 60%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+    }
+    .hero .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 640px; margin: 0 auto 32px; }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 12px 28px; border-radius: 8px;
+      font-weight: 600; font-size: 0.92rem; transition: all 0.25s;
+      cursor: pointer;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+      color: var(--obsidian); border: none;
+    }
+    .btn-gold:hover { filter: brightness(1.15); color: var(--obsidian); }
+    .btn-outline {
+      border: 1px solid rgba(201,168,76,0.4); color: var(--gold);
+    }
+    .btn-outline:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
+
+    .stat-bar {
+      display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+      padding: 32px 0; margin-top: 44px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stat { text-align: center; }
+    .stat .num { font-size: 1.7rem; font-weight: 800; color: var(--gold-bright); font-family: 'JetBrains Mono', monospace; }
+    .stat .label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+    /* ── CARDS ── */
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 26px;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      position: relative;
+    }
+    .card:hover { border-color: rgba(201,168,76,0.35); box-shadow: 0 8px 30px var(--glow); }
+    .card-icon { font-size: 2rem; margin-bottom: 14px; font-family: 'Georgia', serif; color: var(--gold); }
+    .card h3 { margin-bottom: 8px; }
+    .card > p { color: var(--muted); font-size: 0.9rem; margin-bottom: 14px; }
+    .card-meta { display: flex; gap: 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.73rem; color: var(--muted); margin-bottom: 14px; flex-wrap: wrap; }
+    .tag {
+      display: inline-block; font-size: 0.7rem; font-weight: 600;
+      padding: 3px 10px; border-radius: 4px;
+      border: 1px solid var(--border); color: var(--gold-dim);
+      margin-right: 6px; margin-bottom: 6px;
+    }
+    .tag.green { border-color: rgba(0,204,102,0.3); color: var(--green); }
+    .tag.amber { border-color: rgba(255,180,0,0.3); color: #ffb400; }
+
+    /* ── PITCH ROWS ── */
+    .pitch-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 44px;
+      align-items: center; padding: 52px 0;
+    }
+    .pitch-row.reverse { direction: rtl; }
+    .pitch-row.reverse > * { direction: ltr; }
+    .pitch-visual {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; aspect-ratio: 16/10;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem; position: relative; overflow: hidden;
+      transition: box-shadow 0.4s;
+    }
+    .pitch-visual:hover { box-shadow: 0 0 40px rgba(201,168,76,0.08); }
+    .pitch-visual .glyph {
+      font-family: 'Georgia', serif;
+      font-size: 6rem;
+      color: var(--gold-bright);
+      text-shadow: 0 0 24px rgba(255,215,0,0.2);
+      transition: transform 0.3s, text-shadow 0.3s;
+    }
+    .pitch-visual:hover .glyph { transform: scale(1.08); text-shadow: 0 0 36px rgba(255,215,0,0.35); }
+    .pitch-content h2 { margin-bottom: 14px; }
+    .pitch-content p { color: var(--muted); font-size: 0.95rem; margin-bottom: 16px; }
+
+    .signal-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 5px 12px; border-radius: 16px;
+      font-size: 0.73rem; font-weight: 700;
+      margin-right: 8px; margin-bottom: 8px;
+    }
+    .signal-badge::before { content: '◆'; font-size: 0.55rem; }
+    .signal-grant { background: rgba(0,204,102,0.08); border: 1px solid rgba(0,204,102,0.25); color: var(--green); }
+    .signal-funding { background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.25); color: var(--gold-bright); }
+    .signal-contract { background: rgba(100,149,237,0.08); border: 1px solid rgba(100,149,237,0.25); color: #6495ed; }
+    .signal-enterprise { background: rgba(255,68,68,0.06); border: 1px solid rgba(255,68,68,0.2); color: var(--red); }
+
+    /* ── GRANT TABLE ── */
+    .grant-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 24px; }
+    .grant-table th, .grant-table td { padding: 13px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+    .grant-table th { color: var(--gold); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px; }
+    .grant-table tr:hover { background: rgba(201,168,76,0.03); }
+
+    /* ── CTA ── */
+    .cta-section { text-align: center; padding: 80px 0; }
+    .cta-section h2 { color: var(--gold-bright); margin-bottom: 10px; }
+    .cta-section p { color: var(--muted); max-width: 500px; margin: 0 auto 24px; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border); padding: 28px 0; text-align: center; color: var(--muted); font-size: 0.8rem; position: relative; z-index: 1; }
+    footer a { color: var(--gold-dim); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .pitch-row, .pitch-row.reverse { grid-template-columns: 1fr; direction: ltr; }
+      .pitch-row.reverse > * { direction: ltr; }
+      nav { display: none; }
+      .card-grid { grid-template-columns: 1fr; }
+      .stat-bar { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PARTICLE CANVAS -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- HEADER -->
+  <header>
+    <div class="wrapper">
       <div class="logo">
-        <span class="emblem">&#8486;</span>
-        <span class="brand">VERITAS</span>
+        <span class="omega">Ω</span>
+        <span>VERITAS</span>
       </div>
       <nav>
-        <a href="#about" class="nav-link">Architecture</a>
-        <a href="#work" class="nav-link">The Monolith</a>
-        <a href="#stack" class="nav-link">Tech Protocol</a>
-        <a href="#contact" class="nav-link cta-btn">Initialize Contact</a>
+        <a href="#ecosystem" class="nav-link">Ecosystem</a>
+        <a href="#signals" class="nav-link">Financial Signals</a>
+        <a href="#grants" class="nav-link">Grants</a>
+        <a href="#benchmark" class="nav-link">Benchmark</a>
+        <a href="https://github.com/VrtxOmega" class="nav-cta" target="_blank" rel="noopener noreferrer">GitHub →</a>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <main>
-      <!-- HERO -->
-      <section id="hero" class="hero-section wrapper">
-        <div class="hero-content">
-          <div class="status-badge">
-            <div class="pulse-dot"></div>
-            <span>SYSTEM ONLINE // VERITAS PROTOCOL ACTIVE</span>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrapper">
+      <div class="badge">
+        <span class="dot"></span>
+        SYSTEM ONLINE — VERITAS PROTOCOL ACTIVE
+      </div>
+      <h1>Engineering the Sovereign Stack</h1>
+      <p class="hero-sub">A vertically-integrated platform: AI governance, desktop agent operators, deterministic verification, and security-forward crypto — all offline-first, all sovereign.</p>
+      <div class="hero-btns">
+        <a href="https://github.com/VrtxOmega" class="btn btn-gold" target="_blank" rel="noopener noreferrer">Audit the Fleet</a>
+        <a href="#grants" class="btn btn-outline">View Grant Targets</a>
+      </div>
+      <div class="stat-bar">
+        <div class="stat"><div class="num">31</div><div class="label">Repositories</div></div>
+        <div class="stat"><div class="num">~193K</div><div class="label">Lines of Code</div></div>
+        <div class="stat"><div class="num">4</div><div class="label">MCP Servers</div></div>
+        <div class="stat"><div class="num">10</div><div class="label">VERITAS Gates</div></div>
+        <div class="stat"><div class="num">3</div><div class="label">AAA Glama Rated</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECOSYSTEM -->
+  <section id="ecosystem">
+    <div class="wrapper">
+      <div class="section-tag">01 &middot; The Stack</div>
+      <h2>The Omega Ecosystem</h2>
+      <p class="subtitle">Four integrated platforms — governance, execution, crypto, and knowledge — forming a complete sovereign AI infrastructure.</p>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">Ω</div>
+          <h3>Omega Brain MCP</h3>
+          <span class="tag green">AAA Glama Rated</span>
+          <p>The cognitive substrate. 10-gate VERITAS pipeline, cryptographic SEAL chain, Cortex alignment gates. 26 MCP tools with deterministic provenance tracking.</p>
+          <div class="card-meta">
+            <span>Python</span><span>3,331 LOC</span><span>v1.0.0</span>
           </div>
-          <h1 class="glitch" data-text="Engineering the Sovereign Stack">
-            <span class="gold-gradient">Engineering the</span><br/>Sovereign Stack
-          </h1>
-          <p class="subtitle">
-            Available for remote full-stack or AI developer roles. Open to contract or full-time.
-          </p>
-          <div class="hero-actions">
-            <a href="https://github.com/VrtxOmega" class="btn primary-btn" target="_blank" rel="noopener noreferrer"><span class="btn-text">Audit the Code</span></a>
-            <a href="./assets/resume.html" target="_blank" rel="noopener noreferrer" class="btn secondary-btn"><span class="btn-text">Download Resume</span></a>
-            <a href="./record/index.html" class="btn secondary-btn"><span class="btn-text">View Build Record</span></a>
-          </div>
+          <a href="https://github.com/VrtxOmega/omega-brain-mcp" target="_blank" rel="noopener noreferrer">GitHub →</a>
+          &nbsp;&middot;&nbsp;
+          <a href="https://glama.ai/mcp/servers/VrtxOmega/omega-brain-mcp" target="_blank" rel="noopener noreferrer">Glama Listing →</a>
         </div>
-        <div class="hero-visual">
-          <div class="rotating-hologram">
-            <div class="ring r1"></div>
-            <div class="ring r2"></div>
-            <div class="ring r3"></div>
-            <div class="core-symbol">&#8486;</div>
+
+        <div class="card">
+          <div class="card-icon">Ω</div>
+          <h3>Gravity Omega</h3>
+          <span class="tag amber">Agent Platform</span>
+          <p>Desktop AI operator. Omega agent loop v5.1, Hermes ACP bridge, 24 typed tools with SAFETY/GATED/RESTRICTED tiers. Fully offline.</p>
+          <div class="card-meta">
+            <span>Electron</span><span>30,815 LOC</span><span>v1.0.0</span>
           </div>
+          <a href="https://github.com/VrtxOmega/Gravity-Omega" target="_blank" rel="noopener noreferrer">GitHub →</a>
         </div>
-      </section>
 
-      <!-- ABOUT THE ARCHITECTURE -->
-      <section id="about" class="about-section wrapper">
-        <div class="section-header">
-          <span class="section-num">01.</span>
-          <h2>The Tri-Node Architecture</h2>
-          <div class="header-line"></div>
+        <div class="card">
+          <div class="card-icon">Ω</div>
+          <h3>OmegaWallet</h3>
+          <span class="tag green">141/141 Tests</span>
+          <p>Desktop Ethereum wallet. Renderer-cannot-sign architecture. MEV protection, cross-chain, Cerberus backend, Tor proxy. Adversarially hardened.</p>
+          <div class="card-meta">
+            <span>Solidity+JS</span><span>85,449 LOC</span><span>v1.0.0</span>
+          </div>
+          <a href="https://github.com/VrtxOmega/OmegaWallet" target="_blank" rel="noopener noreferrer">GitHub →</a>
         </div>
-        <div class="node-grid">
-          <div class="node-card observer-reveal">
-            <div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg></div>
-            <h3>The Brain Segment</h3>
-            <p>Autonomous LLM orchestration wrapped in a Constraint-Locked framework. Mathematical bounds ensure system outputs are predictable, secure, and auditable.</p>
-          </div>
-          <div class="node-card observer-reveal" style="transition-delay: 100ms;">
-            <div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-            <h3>The Shield Segment</h3>
-            <p>Low-level hardware telemetry, automated Python refactoring daemons, and system health monitors enforcing execution limits across the network.</p>
-          </div>
-          <div class="node-card observer-reveal" style="transition-delay: 200ms;">
-            <div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg></div>
-            <h3>The Media Layer</h3>
-            <p>Unified Cross-platform ecosystems (Electron/React Native) delivering sovereign audiobooks, video processing, and physical file syncing over WebSockets.</p>
-          </div>
-        </div>
-      </section>
 
-      <!-- THE MONOLITH REPOSITORIES -->
-      <section id="work" class="work-section wrapper">
-        <div class="section-header">
-          <span class="section-num">02.</span>
-          <h2>The Monolith (Deployed Systems)</h2>
-          <div class="header-line"></div>
-        </div>
-        
-        <div class="project-list">
-          
-          <!-- Project 1: Omega Brain -->
-          <div class="project-card observer-reveal">
-            <div class="project-visual">
-              <img src="./assets/projects/omega_brain_1776928479665.png" alt="Omega Brain Pipeline Execution" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; border: 1px solid rgba(201, 168, 76, 0.3); box-shadow: 0 0 20px rgba(201,168,76,0.15);" />
-            </div>
-            <div class="project-info">
-              <div class="project-tags"><span class="tag">Python</span><span class="tag">Cryptography</span></div>
-              <h3>Omega Brain MCP</h3>
-              <p style="font-size: 0.85rem; color: #c9a84c; margin-top: -10px; margin-bottom: 15px; font-weight: 600;">&mdash; Listed on awesome-mcp-servers</p>
-              <p>Provenance and trust layer for AI agents. VERITAS 10-gate scoring pipeline, Cortex approval gates, S.E.A.L. tamper-proof audit ledger, and semantic RAG with cryptographic provenance tracking.</p>
-              <p style="font-size: 0.85rem; font-weight: bold; background: rgba(201, 168, 76, 0.1); padding: 8px 12px; border-radius: 4px; border-left: 3px solid #c9a84c; margin-bottom: 15px;">
-                Security: A | License: A | Quality: A <span style="font-weight: normal; color: #aaa;">&mdash; 27 tools scored, all A-grade</span>
-              </p>
-              <div style="display: flex; gap: 15px; font-weight: bold; margin-bottom: 15px;">
-                <a href="https://glama.ai/mcp/servers/VrtxOmega/omega-brain-mcp" target="_blank" rel="noopener noreferrer" class="view-link">Glama Listing</a>
-                <span style="color: #666;">&middot;</span>
-                <a href="https://github.com/VrtxOmega/omega-brain-mcp" target="_blank" rel="noopener noreferrer" class="view-link">GitHub</a>
-              </div>
-              <a href="https://glama.ai/mcp/servers/VrtxOmega/omega-brain-mcp" target="_blank" rel="noopener noreferrer" style="display:block;">
-                <img src="./assets/glama_badge_omega_brain.svg" alt="Glama MCP A-Tier Server" style="height: 100px; transform: scale(1.05); transform-origin: left center;" />
-              </a>
-            </div>
+        <div class="card">
+          <div class="card-icon">Ω</div>
+          <h3>Veritas Vault</h3>
+          <span class="tag">Knowledge Engine</span>
+          <p>Local-first AI knowledge retention. Passive session capture, SQLite + MiniSearch FTS, Ollama embeddings, morning briefs, actionable intelligence.</p>
+          <div class="card-meta">
+            <span>Electron</span><span>11,027 LOC</span><span>v1.0.0</span>
           </div>
-
-          <!-- Project: Ollama MCP -->
-          <div class="project-card reverse observer-reveal">
-            <div class="project-info">
-              <div class="project-tags"><span class="tag">Local AI</span><span class="tag">Security</span></div>
-              <h3>Ollama-Omega MCP</h3>
-              <p style="font-size: 0.85rem; color: #c9a84c; margin-top: -10px; margin-bottom: 15px; font-weight: 600;">&mdash; Listed on awesome-mcp-servers</p>
-              <p>Bridges any Ollama model into your IDE via MCP. Features strict deterministic guardrails, secure offline execution, and high-fidelity local inference processing.</p>
-              <p style="font-size: 0.85rem; font-weight: bold; background: rgba(201, 168, 76, 0.1); padding: 8px 12px; border-radius: 4px; border-left: 3px solid #c9a84c; margin-bottom: 15px;">
-                Security: A | License: A | Quality: A <span style="font-weight: normal; color: #aaa;">&mdash; Top Tier Glama Rated</span>
-              </p>
-              <div style="display: flex; gap: 15px; font-weight: bold; margin-bottom: 15px;">
-                <a href="https://glama.ai/mcp/servers/VrtxOmega/ollama-mcp" target="_blank" rel="noopener noreferrer" class="view-link">Glama Listing</a>
-                <span style="color: #666;">&middot;</span>
-                <a href="https://github.com/VrtxOmega/ollama-mcp" target="_blank" rel="noopener noreferrer" class="view-link">GitHub</a>
-              </div>
-              <a href="https://glama.ai/mcp/servers/VrtxOmega/ollama-mcp" target="_blank" rel="noopener noreferrer" style="display:block;">
-                <img src="./assets/glama_badge_ollama.svg" alt="Glama MCP A-Tier Server" style="height: 100px; transform: scale(1.05); transform-origin: left center;" />
-              </a>
-            </div>
-            <div class="project-visual">
-              <img src="./assets/projects/ollama_mcp_1776928503532.png" alt="Ollama MCP Interface" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; border: 1px solid rgba(201, 168, 76, 0.3); box-shadow: 0 0 20px rgba(201,168,76,0.15);" />
-            </div>
-          </div>
-
-          <!-- Project 2: Veritas Vault v3.0 -->
-          <div class="project-card reverse observer-reveal">
-            <div class="project-info">
-              <div class="project-tags"><span class="tag">Electron</span><span class="tag">Ollama LLMs</span></div>
-              <h3>Veritas Vault v3.0</h3>
-              <p>High-performance Electron application for auto-capturing, organizing, and injecting intelligence across active developer sessions. Analyzes developer context dynamically over raw SQlite integrations.</p>
-              <a href="https://github.com/VrtxOmega/veritas-vault" target="_blank" rel="noopener noreferrer" class="view-link">View Repository &#8594;</a>
-            </div>
-            <div class="project-visual">
-              <img src="./assets/projects/veritas_vault_ui.png" alt="Veritas Vault Interface" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; border: 1px solid rgba(201, 168, 76, 0.3); box-shadow: 0 0 20px rgba(201,168,76,0.15);" />
-            </div>
-          </div>
-
-          <!-- Project 3: Sovereign Media AIO -->
-          <div class="project-card observer-reveal">
-            <div class="project-visual">
-              <img src="./assets/projects/sovereign_media_ui.png" alt="Sovereign Media AIO Interface" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; border: 1px solid rgba(201, 168, 76, 0.3); box-shadow: 0 0 20px rgba(201,168,76,0.15);" />
-            </div>
-            <div class="project-info">
-              <div class="project-tags"><span class="tag">Electron</span><span class="tag">WebVTT</span></div>
-              <h3>Sovereign Media AIO</h3>
-              <p>A unified desktop platform for local-first Audiobooks, eBooks, and cinematic video. Features auto-persisting watch queues, binge-watching overlays, and completely self-sufficient local DRM removal tools.</p>
-              <a href="https://github.com/VrtxOmega/omega-audio-player" target="_blank" rel="noopener noreferrer" class="view-link">View Repository &#8594;</a>
-            </div>
-          </div>
-
-          <!-- Project 4: Aegis Protect -->
-          <div class="project-card reverse observer-reveal">
-            <div class="project-info">
-              <div class="project-tags"><span class="tag">Flask</span><span class="tag">Hardware</span></div>
-              <h3>Aegis Protect & Shield</h3>
-              <p>A direct-to-metal hardware monitoring and security tuning system. Reads CPU/GPU voltages and automatically throttles execution loops to ensure thermal stability. Includes an automated Python self-healing daemon.</p>
-              <a href="https://github.com/VrtxOmega/aegis-protect" target="_blank" rel="noopener noreferrer" class="view-link">View Repository &#8594;</a>
-            </div>
-            <div class="project-visual">
-              <img src="./assets/projects/aegis_protect_ui.png" alt="Aegis Protect Interface" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; border: 1px solid rgba(201, 168, 76, 0.3); box-shadow: 0 0 20px rgba(201,168,76,0.15);" />
-            </div>
-          </div>
-
-          <!-- Project 5: OmegaWallet -->
-          <div class="project-card observer-reveal">
-            <div class="project-visual">
-              <img src="./assets/projects/omega_wallet_ui.png" alt="OmegaWallet Interface" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; border: 1px solid rgba(201, 168, 76, 0.3); box-shadow: 0 0 20px rgba(201,168,76,0.15);" />
-            </div>
-            <div class="project-info">
-              <div class="project-tags"><span class="tag">Security</span><span class="tag">Cryptography</span></div>
-              <h3>OmegaWallet</h3>
-              <p>Immutable ledger system built for mathematically constrained autonomous agent usage. Employs aggressive cryptographic transaction signing and rigid state limits.</p>
-              <a href="https://github.com/VrtxOmega/omega-wallet" target="_blank" rel="noopener noreferrer" class="view-link">View Repository &#8594;</a>
-            </div>
-          </div>
-
-          <!-- Project 6: Sovereign Bridge -->
-          <div class="project-card reverse observer-reveal">
-            <div class="project-info">
-              <div class="project-tags"><span class="tag">React Native</span><span class="tag">WebSockets</span></div>
-              <h3>Sovereign Bridge</h3>
-              <p>Cross-platform unified ecosystem establishing a direct umbilical between PC and Mobile devices context. Transfers active clipboards, raw files, and telemetry through automated LocalTunnel bypassing cloud interference.</p>
-              <span class="view-link disabled" style="opacity: 0.6; font-style: italic; cursor: default;">Private Repository — <a href="mailto:VrtxOmega@pm.me?subject=Request Access: Sovereign Bridge">Request Access →</a></span>
-            </div>
-            <div class="project-visual">
-              <img src="./assets/projects/sovereign_bridge_ui.png" alt="Sovereign Bridge Interface" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; border: 1px solid rgba(201, 168, 76, 0.3); box-shadow: 0 0 20px rgba(201,168,76,0.15);" />
-            </div>
-          </div>
-
-          <!-- Project 7: The FORGE Meta-Skill -->
-          <div class="project-card observer-reveal">
-            <div class="project-visual">
-              <img src="./assets/projects/forge_meta_skill_ui.png" alt="FORGE Meta-Skill Interface" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; border: 1px solid rgba(201, 168, 76, 0.3); box-shadow: 0 0 20px rgba(201,168,76,0.15);" />
-            </div>
-            <div class="project-info">
-              <div class="project-tags"><span class="tag">Edge Ecosystem</span><span class="tag">Meta-Skill Engineering</span></div>
-              <h3>The FORGE Meta-Skill</h3>
-              <p>Developed a custom meta-skill deployed within the Edge Gallery ecosystem. Features a deterministic "Generate + Validate + Preview + Export" workflow synced via an encrypted HTTPS origin and local Websocket tunneling.</p>
-              <a href="https://github.com/VrtxOmega/forge-skill" target="_blank" rel="noopener noreferrer" class="view-link">View Repository &#8594;</a>
-            </div>
-          </div>
-
-          <!-- Project 8: SovereignCapture -->
-          <div class="project-card reverse observer-reveal">
-            <div class="project-info">
-              <div class="project-tags"><span class="tag">Electron</span><span class="tag">FFmpeg</span></div>
-              <h3>SovereignCapture</h3>
-              <p>Direct-to-metal recording ecosystem built natively with Electron and FFmpeg. Features hardware encoding presets, active GPU API hooks, and cinematic frame rendering bypassing generic software encumbrances.</p>
-              <a href="https://github.com/VrtxOmega/sovereign-capture" target="_blank" rel="noopener noreferrer" class="view-link">View Repository &#8594;</a>
-            </div>
-            <div class="project-visual">
-              <img src="./assets/projects/sovereign_capture_ui.png" alt="SovereignCapture Interface" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; border: 1px solid rgba(201, 168, 76, 0.3); box-shadow: 0 0 20px rgba(201,168,76,0.15);" />
-            </div>
-          </div>
-
-          <!-- Project 9: VERITAS Docs -->
-          <div class="project-card observer-reveal">
-            <div class="project-visual">
-              <img src="./assets/projects/veritas_docs_ui.png" alt="VERITAS Docs Interface" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; border: 1px solid rgba(201, 168, 76, 0.3); box-shadow: 0 0 20px rgba(201,168,76,0.15);" />
-            </div>
-            <div class="project-info">
-              <div class="project-tags"><span class="tag">Python Routers</span><span class="tag">Renderer</span></div>
-              <h3>VERITAS Docs</h3>
-              <p>Automated document alignment framework. Capable of parsing complex inbound data streams and structurally rerouting markdown into perfectly formatted PDF, DOCX, and HTML artifacts.</p>
-              <a href="https://github.com/VrtxOmega/veritas-docs" target="_blank" rel="noopener noreferrer" class="view-link">View Repository &#8594;</a>
-            </div>
-          </div>
-
-          <!-- Project 10: Aegis ReWrite -->
-          <div class="project-card reverse observer-reveal">
-            <div class="project-info">
-              <div class="project-tags"><span class="tag">Machine Parsing</span><span class="tag">AST</span></div>
-              <h3>Aegis ReWrite</h3>
-              <p>Autonomous Python syntax repair and restructuring engine. Parses deep execution failures to determine logical discrepancies, automatically generating clean, secure fixes for production systems.</p>
-              <a href="https://github.com/VrtxOmega/aegis-rewrite" target="_blank" rel="noopener noreferrer" class="view-link">View Repository &#8594;</a>
-            </div>
-            <div class="project-visual">
-              <img src="./assets/projects/aegis_rewrite_ui.png" alt="Aegis ReWrite Interface" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; border: 1px solid rgba(201, 168, 76, 0.3); box-shadow: 0 0 20px rgba(201,168,76,0.15);" />
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- SKILLS PROTOCOL -->
-      <section id="stack" class="stack-section wrapper">
-        <div class="section-header">
-          <span class="section-num">03.</span>
-          <h2>Tech Protocol</h2>
-          <div class="header-line"></div>
-        </div>
-        <div class="skills-grid">
-          <div class="skill-pill observer-reveal">Python (Advanced)</div>
-          <div class="skill-pill observer-reveal" style="transition-delay: 50ms;">Electron/Node.js</div>
-          <div class="skill-pill observer-reveal" style="transition-delay: 100ms;">Vanilla JavaScript</div>
-          <div class="skill-pill observer-reveal" style="transition-delay: 150ms;">C++ / Emscripten</div>
-          <div class="skill-pill observer-reveal" style="transition-delay: 200ms;">React Native</div>
-          <div class="skill-pill observer-reveal" style="transition-delay: 250ms;">Kotlin / Android</div>
-          <div class="skill-pill observer-reveal" style="transition-delay: 300ms;">SQLite / PostgreSQL</div>
-          <div class="skill-pill observer-reveal" style="transition-delay: 350ms;">WebSocket / IPC</div>
-          <div class="skill-pill gold observer-reveal" style="transition-delay: 400ms;">Mathematical AI Bounding</div>
-        </div>
-      </section>
-
-      <!-- CONTACT -->
-      <section id="contact" class="contact-section wrapper">
-        <div class="contact-container glass-panel observer-reveal">
-          <h2 class="gold-gradient">Initialize Handshake</h2>
-          <p>The sovereign stack is fully operational. Open communication channels for deployment, scaling, or employment inquiries.</p>
-          
-          <div class="cli-input-wrapper">
-            <span class="prompt-arrow">&#10095;</span>
-            <input type="text" id="cli-input" class="cli-input" placeholder="Type a message and hit Enter..." autocomplete="off" />
-            <span class="cursor"></span>
-          </div>
-
-          <div class="links-row">
-            <a href="https://github.com/VrtxOmega" target="_blank" rel="noopener noreferrer" class="contact-link text-badge" title="GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/RJLopezAI" target="_blank" rel="noopener noreferrer" class="contact-link text-badge" title="LinkedIn">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0zM7.12 20.45H3.56V9h3.56v11.45zM5.34 7.43c-1.14 0-2.06-.92-2.06-2.06 0-1.14.92-2.06 2.06-2.06s2.06.92 2.06 2.06c0 1.14-.92 2.06-2.06 2.06zm15.11 13.02h-3.56v-5.56c0-1.33-.03-3.03-1.85-3.03-1.85 0-2.13 1.44-2.13 2.94v5.65H9.36V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.37-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29z"/></svg> LinkedIn
-            </a>
-            <a href="mailto:VrtxOmega@pm.me" class="contact-link text-badge" title="Email">
-               <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M0 4v16h24V4H0zm20.5 2L12 11 3.5 6h17zM2 18V7.5l10 6.5 10-6.5V18H2z"/></svg> Email
-            </a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="wrapper">
-        <div class="footer-content">
-          <span>&copy; 2026 VrtxOmega. All rights reserved.</span>
-          <span class="version">V_SYS_1.3.1</span>
+          <a href="https://github.com/VrtxOmega/veritas-vault" target="_blank" rel="noopener noreferrer">GitHub →</a>
         </div>
       </div>
-    </footer>
+    </div>
+  </section>
 
-    <script type="module" src="/src/main.js"></script>
-  </body>
+  <!-- FINANCIAL SIGNALS -->
+  <section id="signals">
+    <div class="wrapper">
+      <div class="section-tag">02 &middot; Financial Signal</div>
+      <h2>Four Paths to Funding</h2>
+      <p class="subtitle">Each platform maps to a distinct funding vector — grants, contracts, enterprise, and partnerships.</p>
+
+      <!-- Pitch 1: OmegaWallet -->
+      <div class="pitch-row">
+        <div class="pitch-content">
+          <span class="signal-badge signal-grant">GRANT-READY</span>
+          <h2>OmegaWallet — Security-Forward Desktop Crypto</h2>
+          <p>Browser wallets dominate, but desktop-native sovereign custody is the underserved category. OmegaWallet's <strong>renderer-cannot-sign architecture</strong> and 141/141 adversarial tests position it for Ethereum Foundation and Gitcoin grant funding.</p>
+          <p>AES-256-GCM split-process. MEV protection. Cross-chain. Tor proxy. Cerberus backend.</p>
+          <div>
+            <span class="signal-badge signal-funding">EF Grants $50k–250k</span>
+            <span class="signal-badge signal-funding">Gitcoin $5k–50k</span>
+          </div>
+          <a href="https://github.com/VrtxOmega/OmegaWallet/blob/main/SECURITY_VALIDATION.md" class="btn btn-gold" target="_blank" rel="noopener noreferrer">Read SECURITY_VALIDATION.md →</a>
+        </div>
+        <div class="pitch-visual"><span class="glyph">Ω</span></div>
+      </div>
+
+      <!-- Pitch 2: MCP Suite -->
+      <div class="pitch-row reverse">
+        <div class="pitch-content">
+          <span class="signal-badge signal-contract">CONSULTING-READY</span>
+          <h2>VERITAS MCP Suite</h2>
+          <p>Four production MCP servers — including <strong>omega-brain-mcp</strong> (Triple-A Glama rated). The only governance-aware MCP ecosystem on GitHub, right as Anthropic pushes MCP as the universal agent protocol.</p>
+          <div style="margin:12px 0;">
+            <span class="tag green">omega-brain-mcp</span>
+            <span class="tag amber">Ollama-Omega</span>
+            <span class="tag">hermes-sentinel</span>
+            <span class="tag">SSWP attestation</span>
+          </div>
+          <p><strong>Every MCP app is missing governance.</strong> VERITAS fills that gap — deterministic verification, cryptographic audit trails, Cortex alignment.</p>
+          <div>
+            <span class="signal-badge signal-contract">MCP Consulting $100–300/hr</span>
+            <span class="signal-badge signal-enterprise">Enterprise Governance SaaS</span>
+          </div>
+        </div>
+        <div class="pitch-visual"><span class="glyph">Ω</span></div>
+      </div>
+
+      <!-- Pitch 3: Sovereign AI -->
+      <div class="pitch-row">
+        <div class="pitch-content">
+          <span class="signal-badge signal-enterprise">ENTERPRISE / DEFENSE</span>
+          <h2>Sovereign AI Desktop — The Anti-OpenAI Play</h2>
+          <p>Everyone ships cloud AI wrappers. Gravity-Omega is a <strong>fully local sovereign AI operator</strong>. No API keys. No telemetry. No external dependencies. Runs on a laptop offline.</p>
+          <p>Omega agent loop v5.1 — 24 typed tools with safety tiers — Hermes ACP bridge — Python + Electron + Ollama.</p>
+          <div>
+            <span class="signal-badge signal-enterprise">Defense RFP $50k–500k</span>
+            <span class="signal-badge signal-grant">Mozilla / OTF $10k–300k</span>
+          </div>
+          <a href="https://github.com/VrtxOmega/Gravity-Omega" class="btn btn-gold" target="_blank" rel="noopener noreferrer">View Platform →</a>
+        </div>
+        <div class="pitch-visual"><span class="glyph">Ω</span></div>
+      </div>
+
+      <!-- Pitch 4: VERITAS Pipeline -->
+      <div class="pitch-row reverse">
+        <div class="pitch-content">
+          <span class="signal-badge signal-grant">HIGHEST UPSIDE</span>
+          <h2>VERITAS — Deterministic AI Governance</h2>
+          <p>From the VERITAS-Omega-CODE spec to the omega-brain-mcp implementation to the SSWP attestation — a <strong>complete deterministic verification pipeline</strong> for AI systems.</p>
+          <p>10 gates: INTAKE → TYPE → DEPENDENCY → EVIDENCE → MATH → COST → INCENTIVE → SECURITY → ADVERSARY → TRACE/SEAL. Every run sealed with SHA-256. This is what the AI safety Executive Order calls for — and you've already built it.</p>
+          <div>
+            <span class="signal-badge signal-grant">DARPA SBIR $100k–2M</span>
+            <span class="signal-badge signal-grant">NIST AI Safety $50k–500k</span>
+          </div>
+        </div>
+        <div class="pitch-visual"><span class="glyph">Ω</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRANTS -->
+  <section id="grants">
+    <div class="wrapper">
+      <div class="section-tag">03 &middot; Funding Vectors</div>
+      <h2>Grant & Funding Targets</h2>
+      <p class="subtitle">Mapped to specific projects. Ready for applications.</p>
+      <table class="grant-table">
+        <thead>
+          <tr><th>Program</th><th>Project</th><th>Est. Range</th><th>Type</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Ethereum Foundation</td><td>OmegaWallet</td><td>$50k–250k</td><td><span class="tag green">Grant</span></td></tr>
+          <tr><td>Gitcoin Grants</td><td>OmegaWallet</td><td>$5k–50k</td><td><span class="tag green">Community</span></td></tr>
+          <tr><td>DARPA SBIR</td><td>VERITAS Pipeline</td><td>$100k–2M</td><td><span class="tag amber">Gov R&D</span></td></tr>
+          <tr><td>NIST AI Safety</td><td>VERITAS Pipeline</td><td>$50k–500k</td><td><span class="tag green">Grant</span></td></tr>
+          <tr><td>Mozilla Builders</td><td>Gravity-Omega</td><td>$10k–100k</td><td><span class="tag green">Grant</span></td></tr>
+          <tr><td>Open Tech Fund</td><td>Gravity-Omega</td><td>$50k–300k</td><td><span class="tag green">Grant</span></td></tr>
+          <tr><td>Anthropic MCP Program</td><td>MCP Suite</td><td>$10k–100k</td><td><span class="tag amber">Partnership</span></td></tr>
+          <tr><td>DEF CON AI Village</td><td>VERITAS + SSWP</td><td>Visibility</td><td><span class="tag amber">Conference</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- BENCHMARK -->
+  <section id="benchmark">
+    <div class="wrapper">
+      <div class="section-tag">04 &middot; Verified Performance</div>
+      <h2>SSWP Fleet Benchmark — 111 Repos, 55K+ Dependencies</h2>
+      <p class="subtitle">Independent comparison: SSWP adversarial probes vs npm audit CVE scanning. Complementary attack surfaces, full supply-chain coverage.</p>
+
+      <div class="stat-bar" style="justify-content:center; gap:32px;">
+        <div class="stat"><div class="num">111</div><div class="label">Repos Scanned</div></div>
+        <div class="stat"><div class="num">55,190</div><div class="label">Dependencies</div></div>
+        <div class="stat"><div class="num">555</div><div class="label">Gate Checks</div></div>
+        <div class="stat"><div class="num" style="color:#ff4444;">1,837</div><div class="label">npm Vulns Found</div></div>
+        <div class="stat"><div class="num" style="color:#00cc66;">0</div><div class="label">SSWP Flags</div></div>
+      </div>
+
+      <div style="background:rgba(201,168,76,0.04); border:1px solid var(--border); border-radius:12px; padding:24px; margin-top:24px;">
+        <p style="color:var(--muted); font-size:0.9rem; line-height:1.7;">
+          <strong style="color:var(--gold-dim);">Why SSWP's zero isn't npm's failure.</strong> 
+          npm audit queries a CVE database — known, catalogued vulnerabilities. 
+          SSWP probes for <em>unknown</em> vectors: typosquatted packages, version-range anomalies enabling dependency confusion, 
+          and missing integrity hashes that npm silently accepts. Together they provide complete npm supply-chain attack surface coverage. 
+          Every result cryptographically sealed with SHA-256 — tamper-evident, verifiable, immutable.
+        </p>
+      </div>
+
+      <div style="text-align:center; margin-top:32px;">
+        <a href="./benchmarks/" class="btn btn-gold" style="margin-right:12px;">View Live Benchmark Dashboard</a>
+        <a href="./content/sswp-benchmark-v1.md" class="btn btn-outline">Read Full Report</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="wrapper">
+      <h2>The Sovereign Stack Is Operational</h2>
+      <p>31 repos. 193K LOC. 4 MCP servers. 10-gate verification. All offline-first. All sovereign. Built for trustless execution.</p>
+      <a href="https://github.com/VrtxOmega" class="btn btn-gold" target="_blank" rel="noopener noreferrer">Explore the Fleet →</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrapper">
+      <p>© 2026 VERITAS Omega Universe &middot; <a href="https://github.com/VrtxOmega">github.com/VrtxOmega</a> &middot; Sovereign Infrastructure</p>
+    </div>
+  </footer>
+
+  <!-- PARTICLE ENGINE -->
+  <script>
+    (function() {
+      const canvas = document.getElementById('particle-canvas');
+      const ctx = canvas.getContext('2d');
+
+      let width, height;
+      let mouse = { x: -1000, y: -1000, active: false };
+      let particles = [];
+
+      const PARTICLE_COUNT = 120;
+      const MOUSE_RADIUS = 160;
+      const CONNECT_DIST = 130;
+      const BASE_SPEED = 0.35;
+
+      // Gold palette
+      const COLORS = [
+        'rgba(255,215,0,0.18)',
+        'rgba(201,168,76,0.15)',
+        'rgba(212,175,55,0.12)',
+        'rgba(255,215,0,0.10)',
+        'rgba(180,160,100,0.14)',
+      ];
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+
+      class Particle {
+        constructor() {
+          this.reset();
+        }
+        reset() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.vx = (Math.random() - 0.5) * BASE_SPEED;
+          this.vy = (Math.random() - 0.5) * BASE_SPEED;
+          this.radius = Math.random() * 1.5 + 0.6;
+          this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+          this.pulse = Math.random() * Math.PI * 2;
+        }
+        update() {
+          // Mouse repulsion / attraction
+          if (mouse.active) {
+            const dx = this.x - mouse.x;
+            const dy = this.y - mouse.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < MOUSE_RADIUS && dist > 0) {
+              const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS;
+              const angle = Math.atan2(dy, dx);
+              this.vx += Math.cos(angle) * force * 0.08;
+              this.vy += Math.sin(angle) * force * 0.08;
+            }
+          }
+
+          // Velocity damping
+          this.vx *= 0.998;
+          this.vy *= 0.998;
+
+          this.x += this.vx;
+          this.y += this.vy;
+
+          // Wrap around edges
+          if (this.x < -20) this.x = width + 20;
+          if (this.x > width + 20) this.x = -20;
+          if (this.y < -20) this.y = height + 20;
+          if (this.y > height + 20) this.y = -20;
+
+          this.pulse += 0.02;
+        }
+        draw(ctx) {
+          const flicker = 1 + Math.sin(this.pulse) * 0.25;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius * flicker, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
+          ctx.fill();
+        }
+      }
+
+      function init() {
+        resize();
+        particles = [];
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+          particles.push(new Particle());
+        }
+      }
+
+      function drawConnections() {
+        ctx.strokeStyle = 'rgba(201,168,76,0.04)';
+        ctx.lineWidth = 0.5;
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < CONNECT_DIST) {
+              const alpha = (1 - dist / CONNECT_DIST) * 0.1;
+              ctx.strokeStyle = `rgba(201,168,76,${alpha})`;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        particles.forEach(p => {
+          p.update();
+          p.draw(ctx);
+        });
+
+        drawConnections();
+
+        // Mouse glow
+        if (mouse.active) {
+          const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 60);
+          gradient.addColorStop(0, 'rgba(255,215,0,0.06)');
+          gradient.addColorStop(1, 'rgba(255,215,0,0)');
+          ctx.fillStyle = gradient;
+          ctx.fillRect(mouse.x - 60, mouse.y - 60, 120, 120);
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      // Event listeners
+      window.addEventListener('resize', resize);
+
+      document.addEventListener('mousemove', function(e) {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+        mouse.active = true;
+      });
+
+      document.addEventListener('mouseleave', function() {
+        mouse.active = false;
+      });
+
+      // Touch support
+      document.addEventListener('touchmove', function(e) {
+        if (e.touches.length > 0) {
+          mouse.x = e.touches[0].clientX;
+          mouse.y = e.touches[0].clientY;
+          mouse.active = true;
+        }
+      }, { passive: true });
+
+      document.addEventListener('touchend', function() {
+        mouse.active = false;
+      });
+
+      // Start
+      init();
+      animate();
+    })();
+  </script>
+
+</body>
 </html>
