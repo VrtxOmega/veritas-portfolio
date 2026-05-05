@@ -26,7 +26,6 @@ body {
 }
 
 /* ── Fonts ── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 .font-cinzel { font-family: 'Cinzel', Georgia, serif; }
 .font-mono { font-family: 'JetBrains Mono', monospace; }
