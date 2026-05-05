@@ -152,7 +152,7 @@
 
   // ── COPY EMAIL ──
   window.copyEmail = function() {
-    navigator.clipboard.writeText('rj@vrtxomega.dev').then(() => {
+    navigator.clipboard.writeText('vrtxomega@pm.me').then(() => {
       const btn = document.querySelector('.copy-btn');
       const orig = btn.textContent;
       btn.textContent = 'Copied!';

@@ -476,3 +476,4 @@ footer .copyright {
   .hero-cta { flex-direction: column; }
   .hero-cta a { width: 100%; }
 }
+.omega-mark { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; font-size: 1.4rem; color: var(--gold); margin-right: 6px; vertical-align: -2px; }
