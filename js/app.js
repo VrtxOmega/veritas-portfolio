@@ -183,19 +183,4 @@
     });
   });
 
-  // ── SKILL BARS ANIMATE ──
-  const skillBars = document.querySelectorAll('.skill-bar .fill');
-  const skillObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const bar = entry.target;
-        const width = bar.style.width;
-        bar.style.width = '0%';
-        setTimeout(() => bar.style.width = width, 100);
-        skillObserver.unobserve(bar);
-      }
-    });
-  }, { threshold: 0.5 });
-  skillBars.forEach(b => skillObserver.observe(b));
-
 })();

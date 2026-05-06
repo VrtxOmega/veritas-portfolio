@@ -20,6 +20,7 @@
       <a href="#story">My Story</a>
       <a href="#breakaway">Breakaway</a>
       <a href="#projects">Projects</a>
+      <a href="#writing">Writing</a>
       <a href="#hire">Hire Me</a>
     </div>
     <a href="#hire" class="nav-hire">HIRE ME</a>
@@ -41,7 +42,8 @@
     <p class="subtitle">12 weeks. One laptop. Zero prior coding experience.</p>
     <p class="tagline">Built Breakaway — a zero-dependency credentialing engine — and won 2nd place at the world's largest AI-coding competition.</p>
     <div class="hero-cta">
-      <a href="#breakaway" class="cta-primary">VIEW BREAKAWAY</a>
+      <a href="https://vrtxomega.github.io/breakaway/" target="_blank" class="cta-primary">TRY LIVE DEMO</a>
+      <a href="#breakaway" class="cta-secondary">VIEW BREAKAWAY</a>
       <a href="#hire" class="cta-secondary">HIRE ME</a>
     </div>
   </div>
@@ -52,7 +54,7 @@
   <div class="metrics-inner">
     <div class="metric">
       <div class="num" data-target="36">0</div>
-      <div class="label">Repositories</div>
+      <div class="label">Projects Built</div>
     </div>
     <div class="metric">
       <div class="num" data-target="500">0</div>
@@ -90,7 +92,7 @@
         <p>"I built Breakaway on a laptop that couldn't run Android Studio. So I made it zero-dependency and browser-native. It won 2nd place at VibeJam because it works everywhere — even on a Chromebook."</p>
       </div>
 
-      <p>In those 12 weeks I built <strong>36 repositories</strong> spanning the VERITAS ecosystem — credentialing engines, MCP servers, desktop applications, security tools, and AI infrastructure. Every line validated, every project tested, every commit GPG-signed.</p>
+      <p>In those 12 weeks I built <strong>36 repositories</strong> spanning the VERITAS ecosystem — credentialing engines, MCP servers, desktop applications, security tools, and AI infrastructure. Every line validated, every project tested.</p>
 
       <p>Now I'm cleaning house — archiving what served its purpose, polishing what matters, and seeking my first paid work. I'm not a salesman. I'm a builder. And I build things that work.</p>
     </div>
@@ -100,17 +102,17 @@
 <!-- ═══ BREAKAWAY ═══ -->
 <section class="section" id="breakaway">
   <h2 class="section-title reveal">Breakaway</h2>
-  <p class="section-subtitle reveal">The credentialing engine that won 2nd Place at VibeJam 2026. Zero dependencies. Browser-native. Tamper-proof.</p>
+  <p class="section-subtitle reveal">The credentialing engine that won 2nd Place at VibeJam 2026. Zero dependencies. Browser-native. 14 challenges. 46 tests. CI/CD.</p>
 
   <div class="breakaway-hero reveal">
     <div class="breakaway-info">
       <h3>Breakaway</h3>
       <span class="tag">VibeJam 2026 — 2nd Place</span>
-      <p>A zero-dependency, browser-native credentialing engine with 12 cognitive challenges that generate tamper-proof SHA-256 verified skill credentials. No frameworks. No build tools. Pure vanilla JavaScript.</p>
-      <p>Built in the same week I was competing against 945+ developers worldwide — while also building two other apps and maintaining side projects. Breakaway won on partial attention.</p>
+      <p>A zero-dependency, browser-native credentialing engine with 14 cognitive challenges across 6 domains that generate tamper-proof SHA-256 verified skill credentials. No frameworks. No build tools. Pure vanilla JavaScript.</p>
+      <p>Built in the same week I was competing against 945+ developers worldwide — while also building two other apps and maintaining side projects. Breakaway won because it runs everywhere while competitors needed heavy toolchains.</p>
       <div class="breakaway-stats">
-        <div class="breakaway-stat"><div class="n">12</div><div class="l">Challenges</div></div>
-        <div class="breakaway-stat"><div class="n">SHA-256</div><div class="l">Verification</div></div>
+        <div class="breakaway-stat"><div class="n">14</div><div class="l">Challenges</div></div>
+        <div class="breakaway-stat"><div class="n">46</div><div class="l">Tests Passing</div></div>
         <div class="breakaway-stat"><div class="n">0</div><div class="l">Dependencies</div></div>
       </div>
       <div class="breakaway-cta-row">
@@ -118,7 +120,7 @@
       </div>
     </div>
     <div class="breakaway-img">
-      <img src="img/breakaway.jpg" alt="Breakaway credentialing engine interface" style="width:100%; border-radius:8px;">
+      <img src="img/breakaway-landing.png" alt="Breakaway credentialing engine — landing page" style="width:100%; border-radius:8px;">
     </div>
   </div>
 
@@ -127,18 +129,23 @@
     <div class="arch-card">
       <div class="icon">⚡</div>
       <h4>Vanilla JavaScript</h4>
-      <p>No frameworks, no build step, no bundler. Pure browser-native JS that runs instantly on any device.</p>
+      <p>No frameworks, no build step, no bundler. Pure browser-native JS that runs instantly on any device. Refactored from 1,324-line monolith into 9 focused modules.</p>
     </div>
     <div class="arch-card">
       <div class="icon">🔐</div>
       <h4>WebCrypto SHA-256</h4>
-      <p>Browser-native cryptography for tamper-proof credential hashing. No external crypto libraries.</p>
+      <p>Browser-native cryptography for tamper-proof credential hashing. No external crypto libraries. Self-contained verification pages you can download and share offline.</p>
     </div>
     <div class="arch-card">
-      <div class="icon">💾</div>
-      <h4>IndexedDB Storage</h4>
-      <p>Client-side persistent storage for credentials. Works offline, no server required.</p>
+      <div class="icon">🧪</div>
+      <h4>Test-Driven</h4>
+      <p>46 passing tests (32 scoring + 14 registry validation). GitHub Actions CI on every push. Guest mode for anonymous play with soft nudges — no forced signup.</p>
     </div>
+  </div>
+
+  <h3 class="section-title reveal" style="font-size:1.4rem; margin-top:60px;">Challenge Gallery</h3>
+  <div class="breakaway-img reveal" style="margin-bottom:24px;">
+    <img src="img/breakaway-challenges.png" alt="Breakaway challenge dashboard showing 14 skill challenges across 6 domains" style="width:100%; border-radius:8px;">
   </div>
 
   <h3 class="section-title reveal" style="font-size:1.4rem; margin-top:60px;">Credential Lifecycle</h3>
@@ -161,17 +168,17 @@
     <div class="arch-card">
       <div class="icon">4</div>
       <h4>Store</h4>
-      <p>Persisted to IndexedDB for offline access and future verification.</p>
+      <p>Persisted to localStorage for offline access. Guest mode saves progress without signup.</p>
     </div>
     <div class="arch-card">
       <div class="icon">5</div>
       <h4>Verify</h4>
-      <p>Third parties can verify credential integrity by re-hashing and comparing.</p>
+      <p>Third parties can verify credential integrity by re-hashing and comparing. QR code + downloadable HTML verifier included.</p>
     </div>
     <div class="arch-card">
       <div class="icon">6</div>
       <h4>Share</h4>
-      <p>Export as portable credential file or share via QR code for instant verification.</p>
+      <p>Export as portable JSON, generate QR codes, or download a self-contained verification page for instant proof.</p>
     </div>
   </div>
 </section>
@@ -188,7 +195,7 @@
         <h4>Breakaway</h4>
         <span class="lang">JS/CSS/HTML</span>
       </div>
-      <p>VibeJam 2026 2nd Place credentialing engine. Zero-dependency, browser-native, SHA-256 verified skill credentials. 12 cognitive challenges.</p>
+      <p>VibeJam 2026 2nd Place credentialing engine. Zero-dependency, browser-native, SHA-256 verified skill credentials. 14 cognitive challenges across 6 domains. 46 tests. Guest mode. CI/CD.</p>
       <div class="meta">
         <span class="stars">38</span>
         <span>JS</span>
@@ -296,15 +303,50 @@
   </div>
 </section>
 
+<!-- ═══ WRITING ═══ -->
+<section class="section" id="writing">
+  <h2 class="section-title reveal">Writing & Research</h2>
+  <p class="section-subtitle reveal">Deep dives into security, AI infrastructure, and the systems that power sovereign computing.</p>
+
+  <div class="projects-grid reveal">
+    <div class="project-card">
+      <div class="top">
+        <h4>Euler Finance Post-Mortem</h4>
+        <span class="lang">Security</span>
+      </div>
+      <p>Technical analysis of the $200M Euler Finance flash loan exploit. Traced the attack path through vulnerable donateToReserves logic, recursive borrowing, and the missing health check that made it all possible.</p>
+      <a href="https://github.com/VrtxOmega/euler-finance-postmortem" target="_blank" class="project-link">→ Read Analysis</a>
+    </div>
+
+    <div class="project-card">
+      <div class="top">
+        <h4>RAG Research & Vector Search</h4>
+        <span class="lang">AI / ML</span>
+      </div>
+      <p>Comparative study of retrieval-augmented generation architectures. Evaluated embedding models, chunking strategies, and reranking pipelines for local AI deployments with zero telemetry.</p>
+      <a href="https://github.com/VrtxOmega/rag-research" target="_blank" class="project-link">→ View Research</a>
+    </div>
+
+    <div class="project-card">
+      <div class="top">
+        <h4>VERITAS Architecture Papers</h4>
+        <span class="lang">Systems</span>
+      </div>
+      <p>Design documents for the VERITAS ecosystem — from the SEAL audit ledger chain to the Cortex governance gate system. How to build trustworthy AI infrastructure without trusting anyone.</p>
+      <a href="https://github.com/VrtxOmega/veritas-docs" target="_blank" class="project-link">→ View Papers</a>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ HIRE ME ═══ -->
 <section class="section" id="hire">
   <h2 class="section-title reveal">Hire Me</h2>
-  <p class="section-subtitle reveal">I build things that work. Three consulting packages — pick what you need.</p>
+  <p class="section-subtitle reveal">I build things that work. Three consulting packages — let's talk about what you need.</p>
 
   <div class="pricing-cards reveal">
     <div class="price-card">
       <div class="name">Privacy Tech Audit</div>
-      <div class="price">$2,500</div>
+      <div class="price">Let's Talk</div>
       <div class="desc">Review AI tooling for telemetry, data leakage, and compliance gaps.</div>
       <ul>
         <li>Full audit report</li>
@@ -316,7 +358,7 @@
 
     <div class="price-card featured">
       <div class="name">Local AI Pilot</div>
-      <div class="price">$3,500</div>
+      <div class="price">Let's Talk</div>
       <div class="desc">Deploy Ollama + RAG + MCP stack on your hardware. Fully local, zero telemetry.</div>
       <ul>
         <li>Working local AI system</li>
@@ -328,7 +370,7 @@
 
     <div class="price-card">
       <div class="name">MCP Server Build</div>
-      <div class="price">$5,000</div>
+      <div class="price">Let's Talk</div>
       <div class="desc">Custom MCP server for your internal API or tool. Production-ready with tests and docs.</div>
       <ul>
         <li>Production MCP server</li>
@@ -341,47 +383,39 @@
 
   <div class="hire-grid" style="margin-top:80px;">
     <div class="reveal">
-      <h3 class="section-title" style="font-size:1.4rem;">Skills</h3>
-      <div class="skills-list">
-        <div class="skill-row">
-          <span class="skill-name">MCP Servers</span>
-          <div class="skill-bar"><div class="fill" style="width:95%"></div></div>
-          <span class="skill-pct">95%</span>
+      <h3 class="section-title" style="font-size:1.4rem;">Tech Stack</h3>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <div class="tech-name">JavaScript / TypeScript</div>
+          <div class="tech-desc">Vanilla JS, Node.js, Express, Electron renderer processes</div>
         </div>
-        <div class="skill-row">
-          <span class="skill-name">Electron Apps</span>
-          <div class="skill-bar"><div class="fill" style="width:90%"></div></div>
-          <span class="skill-pct">90%</span>
+        <div class="tech-item">
+          <div class="tech-name">Python</div>
+          <div class="tech-desc">FastAPI, asyncio, SQLite, vector embeddings, MCP servers</div>
         </div>
-        <div class="skill-row">
-          <span class="skill-name">Python / TypeScript</span>
-          <div class="skill-bar"><div class="fill" style="width:88%"></div></div>
-          <span class="skill-pct">88%</span>
+        <div class="tech-item">
+          <div class="tech-name">Local AI</div>
+          <div class="tech-desc">Ollama, RAG pipelines, vector search, semantic chunking</div>
         </div>
-        <div class="skill-row">
-          <span class="skill-name">Local AI (Ollama)</span>
-          <div class="skill-bar"><div class="fill" style="width:92%"></div></div>
-          <span class="skill-pct">92%</span>
+        <div class="tech-item">
+          <div class="tech-name">MCP & Tooling</div>
+          <div class="tech-desc">Model Context Protocol, Glama registry, custom tool servers</div>
         </div>
-        <div class="skill-row">
-          <span class="skill-name">Security Testing</span>
-          <div class="skill-bar"><div class="fill" style="width:85%"></div></div>
-          <span class="skill-pct">85%</span>
+        <div class="tech-item">
+          <div class="tech-name">Security</div>
+          <div class="tech-desc">WebCrypto PBKDF2/SHA-256, XSS sanitization, adversarial testing</div>
         </div>
-        <div class="skill-row">
-          <span class="skill-name">RAG / Vector Search</span>
-          <div class="skill-bar"><div class="fill" style="width:80%"></div></div>
-          <span class="skill-pct">80%</span>
+        <div class="tech-item">
+          <div class="tech-name">DevOps</div>
+          <div class="tech-desc">GitHub Actions CI, zero-dependency deploys, static hosting</div>
         </div>
-        <div class="skill-row">
-          <span class="skill-name">Verifiable Credentials</span>
-          <div class="skill-bar"><div class="fill" style="width:95%"></div></div>
-          <span class="skill-pct">95%</span>
+        <div class="tech-item">
+          <div class="tech-name">Smart Contracts</div>
+          <div class="tech-desc">Solidity, Hardhat, 141/141 adversarial test coverage</div>
         </div>
-        <div class="skill-row">
-          <span class="skill-name">Zero-Telemetry Arch</span>
-          <div class="skill-bar"><div class="fill" style="width:98%"></div></div>
-          <span class="skill-pct">98%</span>
+        <div class="tech-item">
+          <div class="tech-name">Desktop Apps</div>
+          <div class="tech-desc">Electron, Monaco Editor, terminal integration, keyboard shortcuts</div>
         </div>
       </div>
     </div>
@@ -394,9 +428,9 @@
         <input type="email" name="email" placeholder="your@email.com" required>
         <select name="project" required>
           <option value="">Select a package...</option>
-          <option value="audit">Privacy Tech Audit ($2,500)</option>
-          <option value="pilot">Local AI Pilot ($3,500)</option>
-          <option value="mcp">MCP Server Build ($5,000)</option>
+          <option value="audit">Privacy Tech Audit</option>
+          <option value="pilot">Local AI Pilot</option>
+          <option value="mcp">MCP Server Build</option>
           <option value="other">Something else</option>
         </select>
         <textarea name="message" placeholder="Tell me about your project..." required></textarea>
