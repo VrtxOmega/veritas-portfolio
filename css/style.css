@@ -57,6 +57,11 @@ nav {
 }
 .nav-hire:hover { background: var(--gold-bright); }
 
+.nav-socials { display: flex; gap: 16px; align-items: center; margin-left: 16px; }
+.nav-socials a { color: var(--text-muted); transition: color 0.2s; display: flex; align-items: center; }
+.nav-socials a:hover { color: var(--gold); }
+.nav-socials svg { width: 18px; height: 18px; fill: currentColor; }
+
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
 .hamburger span { width: 24px; height: 2px; background: var(--gold); transition: all 0.3s; }
 
@@ -452,6 +457,7 @@ footer .copyright {
 /* ── Mobile ── */
 @media (max-width: 900px) {
   .nav-links { display: none; }
+  .nav-socials { display: none; }
   .hamburger { display: flex; }
   .metrics-inner { grid-template-columns: repeat(2, 1fr); }
   .metric { border-bottom: 1px solid var(--border); }
