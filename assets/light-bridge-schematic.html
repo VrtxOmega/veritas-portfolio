@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VERITAS Light Bridge v3.7 — Hardware Schematic</title>
+<style>
+  * { box-sizing: border-box; }
+  html,
+  body {
+    overflow-x: hidden;
+  }
+  body {
+    margin: 0;
+    background: #000;
+    color: #D4AF37;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at center, #0f0f10 0%, #000 70%);
+    padding: 20px;
+  }
+  .wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at top, rgba(212,175,55,0.06), transparent 60%),
+      radial-gradient(ellipse at bottom, rgba(212,175,55,0.04), transparent 60%);
+    pointer-events: none;
+  }
+  svg {
+    width: 95vw;
+    max-width: 1600px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 0 40px rgba(0,0,0,0.9));
+  }
+  .domain-label {
+    fill: #8a7a3d;
+    font-size: 12px;
+    letter-spacing: 1.8px;
+    font-weight: 500;
+  }
+  .component rect {
+    fill: #08080a;
+    stroke: #D4AF37;
+    stroke-width: 1.5;
+    transition: all 0.3s ease;
+  }
+  .component text {
+    fill: #D4AF37;
+    font-size: 11px;
+    letter-spacing: 0.4px;
+    pointer-events: none;
+    font-weight: 500;
+  }
+  .component.interact { cursor: pointer; }
+  .component.interact:hover rect {
+    stroke: #FFD700;
+    filter: url(#gold-glow);
+    fill: #0f0e08;
+  }
+  .component.active rect {
+    stroke: #FFD700 !important;
+    stroke-width: 2.2;
+    filter: url(#gold-glow);
+    fill: #151206;
+  }
+  .trace {
+    stroke: #D4AF37;
+    stroke-width: 2;
+    fill: none;
+    opacity: 0.6;
+    filter: url(#gold-glow);
+    transition: opacity 0.25s, stroke 0.25s;
+    stroke-linecap: round;
+  }
+  .trace.active {
+    opacity: 1;
+    stroke: #FFD700;
+    stroke-width: 3.2;
+    animation: tracePulse 0.7s ease-out;
+  }
+  @keyframes tracePulse {
+    0% { stroke-width: 2; }
+    50% { stroke-width: 4.5; filter: url(#gold-glow) brightness(1.4); }
+    100% { stroke-width: 3.2; }
+  }
+  .ir-beam {
+    stroke: #D4AF37;
+    stroke-width: 3;
+    stroke-dasharray: 6 10;
+    opacity: 0.75;
+    filter: url(#gold-glow);
+    animation: dashFlow 1.8s linear infinite;
+  }
+  @keyframes dashFlow { to { stroke-dashoffset: -32; } }
+  .ir-beam.active, #ir-beams:hover .ir-beam {
+    stroke: #FFD700;
+    opacity: 1;
+    stroke-width: 4;
+  }
+  .slot {
+    fill: #000;
+    stroke: #111;
+    stroke-width: 1.5;
+  }
+  .slot::after { content: ""; }
+  .led {
+    filter: url(#gold-glow);
+    animation: ledIdle 3s ease-in-out infinite;
+  }
+  @keyframes ledIdle { 0%,92%,100%{opacity:1} 95%{opacity:0.5} }
+  .dust {
+    fill: #D4AF37;
+    opacity: 0.12;
+    animation: floatDust 9s ease-in-out infinite;
+  }
+  @keyframes floatDust {
+    0%,100% { transform: translate(0,0); opacity: 0.08; }
+    50% { transform: translate(4px,-18px); opacity: 0.22; }
+  }
+  #tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: rgba(3,3,4,0.94);
+    border: 1px solid #D4AF37;
+    color: #FFD700;
+    padding: 9px 13px;
+    font-size: 12px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    max-width: min(260px, calc(100vw - 24px));
+    z-index: 50;
+    box-shadow: 0 0 24px rgba(212,175,55,0.25), inset 0 0 12px rgba(212,175,55,0.06);
+    transform: translateY(4px);
+    line-height: 1.4;
+    backdrop-filter: blur(6px);
+  }
+  #tooltip.show { opacity: 1; transform: translateY(0); }
+  .legend {
+    position: absolute;
+    bottom: 22px;
+    right: 22px;
+    background: rgba(5,5,3,0.88);
+    border: 1px solid #5a4e2a;
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 11px;
+    line-height: 1.65;
+    color: #D4AF37;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.7), inset 0 0 0 1px rgba(212,175,55,0.08);
+    max-width: 270px;
+  }
+  .legend h4 {
+    margin: 0 0 7px;
+    color: #FFD700;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+  }
+  .legend ul { margin: 0; padding-left: 16px; }
+  .legend li { margin: 3px 0; }
+  .legend strong { color: #FFD700; font-weight: 600; }
+  .caption {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: #5a4e2a;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    max-width: calc(100vw - 24px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    pointer-events: none;
+  }
+  .pv-cell {
+    fill: #140f04;
+    stroke: #3a2f12;
+    stroke-width: 1;
+    transition: all 0.35s ease;
+  }
+  .pv-array.active .pv-cell {
+    fill: #FFD700;
+    stroke: #FFD700;
+    filter: url(#gold-glow);
+  }
+  .sram-cell {
+    fill: #D4AF37;
+    opacity: 0.14;
+    transition: opacity 0.2s;
+  }
+  .courier.active .sram-cell {
+    animation: sramFlicker 0.9s infinite;
+  }
+  @keyframes sramFlicker {
+    0%,100% { opacity: 0.08; }
+    30% { opacity: 0.65; }
+    60% { opacity: 0.22; }
+  }
+  .nfc-spring, .nfc-gate {
+    transition: transform 0.45s cubic-bezier(.2,.9,.3,1.2);
+    transform-origin: left center;
+  }
+  .nfc-loop:hover .nfc-spring { transform: translateX(-12px) scaleX(0.72); }
+  .nfc-loop:hover .nfc-gate { transform: translateX(30px); }
+  .nfc-loop:hover rect { stroke: #FFD700; }
+  .power-trace.flowing {
+    stroke-dasharray: 7 7;
+    animation: powerFlow 0.9s linear infinite;
+    stroke: #FFD700;
+    opacity: 1;
+  }
+  @keyframes powerFlow { to { stroke-dashoffset: -14; } }
+  .switch-dot { transition: all 0.22s ease; }
+  .tactile.active .switch-dot {
+    fill: #FFD700;
+    opacity: 1;
+    r: 8.5;
+    filter: url(#gold-glow);
+  }
+  .tactile.active rect { stroke: #FFD700; }
+  .title-main {
+    fill: #D4AF37;
+    font-size: 26px;
+    letter-spacing: 3px;
+    font-weight: 600;
+  }
+  .title-sub {
+    fill: #8a7a3d;
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+  @media (max-width: 900px) {
+    .legend { display: none; }
+    .caption { font-size: 8px; bottom: 6px; }
+    .component text { font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <svg viewBox="0 0 1600 900" id="schematic" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="titanium" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#2b32"/>
+        <stop offset="22%" stop-color="#1c1c21"/>
+        <stop offset="50%" stop-color="#121215"/>
+        <stop offset="78%" stop-color="#1a1a1f"/>
+        <stop offset="100%" stop-color="#26262d"/>
+      </linearGradient>
+      <pattern id="brushed" width="400" height="4" patternUnits="userSpaceOnUse">
+        <rect width="400" height="4" fill="#0b0b0d"/>
+        <rect y="0" width="400" height="1" fill="#3a3a44" opacity="0.12"/>
+        <rect y="1" width="400" height="1" fill="#000" opacity="0.2"/>
+        <rect y="3" width="400" height="0.5" fill="#d4af37" opacity="0.03"/>
+      </pattern>
+      <filter id="gold-glow" x="-40%" y="-40%" width="180%" height="180%">
+        <feGaussianBlur stdDeviation="2.8" result="blur1"/>
+        <feGaussianBlur stdDeviation="6" result="blur2" in="SourceGraphic"/>
+        <feFlood flood-color="#FFD700" flood-opacity="0.9" result="color"/>
+        <feComposite in="color" in2="blur1" operator="in" result="glow1"/>
+        <feComposite in="color" in2="blur2" operator="in" result="glow2"/>
+        <feMerge>
+          <feMergeNode in="glow2"/>
+          <feMergeNode in="glow1"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+      <filter id="deep-inner">
+        <feOffset dy="1"/>
+        <feGaussianBlur stdDeviation="2.5" result="b"/>
+        <feComposite in="SourceGraphic" in2="b" operator="out" result="inv"/>
+        <feFlood flood-color="#000" flood-opacity="0.9"/>
+        <feComposite operator="in" in2="inv"/>
+        <feComposite in2="SourceGraphic" operator="over"/>
+      </filter>
+    </defs>
+
+    <!-- Chassis -->
+    <rect width="1600" height="900" fill="#000"/>
+    <rect x="16" y="16" width="1568" height="868" rx="34" fill="url(#titanium)" stroke="#3d3d45" stroke-width="2.5"/>
+    <rect x="16" y="16" width="1568" height="868" rx="34" fill="url(#brushed)" opacity="0.18"/>
+    <rect x="16" y="16" width="1568" height="868" rx="34" fill="none" stroke="#000" stroke-width="8" opacity="0.4"/>
+
+    <!-- Titles -->
+    <text x="800" y="52" text-anchor="middle" class="title-main">VERITAS LIGHT BRIDGE v3.7</text>
+    <text x="800" y="74" text-anchor="middle" class="title-sub">PHYSICAL ENCLOSURE (TITANIUM CHASSIS)</text>
+
+    <!-- Domains -->
+    <g id="command-domain">
+      <rect x="70" y="90" width="640" height="760" rx="20" fill="none" stroke="#5a4e2a" stroke-width="1.3" stroke-dasharray="9 7" opacity="0.8"/>
+      <text x="390" y="120" text-anchor="middle" class="domain-label">COMMAND DOMAIN (External Interface)</text>
+    </g>
+    <g id="custody-domain">
+      <rect x="890" y="90" width="640" height="760" rx="20" fill="none" stroke="#5a4e2a" stroke-width="1.3" stroke-dasharray="9 7" opacity="0.8"/>
+      <text x="1210" y="120" text-anchor="middle" class="domain-label">CUSTODY DOMAIN (Secure Element)</text>
+    </g>
+
+    <!-- Air Gap -->
+    <g id="airgap">
+      <rect x="710" y="90" width="180" height="760" fill="#000000"/>
+      <g fill="#050505" stroke="#1a1a1c" stroke-width="1.5" filter="url(#deep-inner)" opacity="0.95">
+        <rect class="slot" x="730" y="145" width="26" height="700" rx="13"/>
+        <rect class="slot" x="770" y="145" width="26" height="700" rx="13"/>
+        <rect class="slot" x="804" y="145" width="26" height="700" rx="13"/>
+        <rect class="slot" x="844" y="145" width="26" height="700" rx="13"/>
+      </g>
+      <text x="800" y="170" text-anchor="middle" fill="#2a2415" font-size="9" letter-spacing="3">PHYSICAL AIR-GAP</text>
+      <text x="800" y="185" text-anchor="middle" fill="#2a2415" font-size="8" letter-spacing="2">MILLED ISOLATION</text>
+      <g id="dust"></g>
+    </g>
+
+    <!-- Traces -->
+    <g id="traces" stroke-linecap="round">
+      <!-- Left -->
+      <path id="t-power-laser" class="trace" d="M260 190 L260 215"/>
+      <path id="t-power-mcu" class="trace" d="M200 190 C200 250 200 280 200 330"/>
+      <path id="t-mcu-tx" class="trace" d="M400 380 L460 380"/>
+      <path id="t-mcu-rx" class="trace" d="M400 410 C430 410 432 502 460 502"/>
+      <path id="t-mcu-eink" class="trace" d="M260 440 L260 480"/>
+      <path id="t-mcu-nfc" class="trace" d="M210 440 C210 540 210 600 210 640"/>
+      <!-- Right -->
+      <path id="t-pv-core" class="trace power-trace" d="M1260 240 C1260 295 1235 310 1220 350"/>
+      <path id="t-core-rx" class="trace" d="M1070 392 L1080 392"/>
+      <path id="t-core-tx" class="trace" d="M1070 502 L1080 502"/>
+      <path id="t-core-courier" class="trace" d="M1220 480 L1220 530"/>
+      <path id="t-core-tactile" class="trace" d="M1285 480 C1285 580 1340 610 1340 680"/>
+    </g>
+
+    <!-- IR Beams -->
+    <g id="ir-beams">
+      <line id="beam-tx" class="ir-beam" x1="630" y1="392.5" x2="910" y2="392.5"/>
+      <line id="beam-rx" class="ir-beam" x1="910" y1="502.5" x2="630" y2="502.5"/>
+      <rect x="620" y="368" width="300" height="160" fill="transparent"/>
+      <text x="770" y="365" text-anchor="middle" fill="#5a4e2a" font-size="9" letter-spacing="1">PHOTON CHANNEL</text>
+    </g>
+    <g id="manchester-animation"></g>
+
+    <!-- LEFT COMPONENTS -->
+    <g class="component interact" id="power-input">
+      <rect x="120" y="120" width="280" height="70" rx="8"/>
+      <text x="260" y="152" text-anchor="middle">PRIMARY POWER</text>
+      <text x="260" y="172" text-anchor="middle">INPUT / REGULATORS</text>
+    </g>
+    <g class="component interact" id="laser-driver">
+      <rect x="120" y="215" width="280" height="70" rx="8"/>
+      <text x="260" y="247" text-anchor="middle">LASER/LED POWER</text>
+      <text x="260" y="267" text-anchor="middle">DRIVER ARRAY</text>
+      <circle cx="385" cy="250" r="2" fill="#D4AF37" opacity="0.6"/>
+    </g>
+    <g class="component interact" id="mcu">
+      <rect x="120" y="330" width="280" height="110" rx="8"/>
+      <text x="260" y="372" text-anchor="middle">USER INTERFACE</text>
+      <text x="260" y="392" text-anchor="middle">MCU / PARSER</text>
+      <rect x="150" y="405" width="220" height="18" rx="4" fill="none" stroke="#3a2f12" stroke-width="1"/>
+      <circle cx="165" cy="414" r="2" fill="#D4AF37"><animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/></circle>
+    </g>
+    <g class="component interact" id="tx-left">
+      <rect x="460" y="360" width="170" height="65" rx="8"/>
+      <text x="545" y="386" text-anchor="middle">TX INFRARED LED</text>
+      <text x="545" y="406" text-anchor="middle">(MANCHESTER)</text>
+      <circle cx="617" cy="392.5" r="6" fill="#1a0f00" stroke="#FFD700" stroke-width="1.5" class="led"/>
+    </g>
+    <g class="component interact" id="rx-left">
+      <rect x="460" y="470" width="170" height="65" rx="8"/>
+      <text x="545" y="496" text-anchor="middle">RX</text>
+      <text x="545" y="516" text-anchor="middle">PHOTODIODE</text>
+      <circle cx="617" cy="502.5" r="6" fill="#0a0000" stroke="#8a2a2a" stroke-width="1.5"/>
+    </g>
+    <g class="component interact" id="eink">
+      <rect x="120" y="480" width="280" height="110" rx="8"/>
+      <text x="260" y="512" text-anchor="middle">STATIC</text>
+      <text x="260" y="532" text-anchor="middle">E-INK DISPLAY</text>
+      <rect x="145" y="548" width="230" height="26" rx="3" fill="#0a0a0a" stroke="#3a2f12"/>
+      <line x1="155" y1="561" x2="210" y2="561" stroke="#5a4e2a" stroke-width="1.5"/>
+      <line x1="155" y1="567" x2="195" y2="567" stroke="#5a4e2a" stroke-width="1"/>
+    </g>
+    <g class="component interact nfc-loop" id="nfc-loop">
+      <rect x="120" y="640" width="280" height="150" rx="8"/>
+      <text x="260" y="668" text-anchor="middle">KINETIC NFC LOOP</text>
+      <text x="260" y="688" text-anchor="middle">MECHANICAL GATE</text>
+      <g transform="translate(148,710)">
+        <path d="M0 15 L9 4 L18 26 L27 4 L36 26 L45 4 L54 26 L63 15" fill="none" stroke="#D4AF37" stroke-width="2.2" class="nfc-spring" stroke-linecap="round"/>
+        <rect x="67" y="2" width="54" height="26" rx="4" fill="#080808" stroke="#D4AF37" stroke-width="1.5" class="nfc-gate"/>
+        <circle cx="94" cy="15" r="3" fill="#D4AF37" opacity="0.7"/>
+        <rect x="128" y="6" width="92" height="18" rx="9" fill="none" stroke="#5a4e2a" stroke-width="1" stroke-dasharray="3 3"/>
+      </g>
+      <text x="260" y="774" text-anchor="middle" font-size="9" fill="#7a6a35">(spring-loaded)</text>
+    </g>
+
+    <!-- RIGHT COMPONENTS -->
+    <g class="component interact pv-array" id="pv-array">
+      <rect x="1200" y="120" width="280" height="120" rx="8"/>
+      <text x="1340" y="147" text-anchor="middle">ISOLATED PHOTOVOLTAIC</text>
+      <text x="1340" y="167" text-anchor="middle">CELL ARRAY</text>
+      <g id="pv-cells" transform="translate(1218,183)"></g>
+    </g>
+    <g class="component interact" id="rx-right">
+      <rect x="910" y="360" width="170" height="65" rx="8"/>
+      <text x="995" y="386" text-anchor="middle">RX</text>
+      <text x="995" y="406" text-anchor="middle">PHOTODIODE</text>
+      <circle cx="923" cy="392.5" r="6" fill="#0a0000" stroke="#8a2a2a" stroke-width="1.5"/>
+    </g>
+    <g class="component interact" id="tx-right">
+      <rect x="910" y="470" width="170" height="65" rx="8"/>
+      <text x="995" y="496" text-anchor="middle">TX INFRARED LED</text>
+      <circle cx="923" cy="502.5" r="6" fill="#1a0f00" stroke="#FFD700" stroke-width="1.5" class="led"/>
+    </g>
+    <g class="component interact" id="core">
+      <rect x="1070" y="350" width="300" height="130" rx="8"/>
+      <text x="1220" y="395" text-anchor="middle">SECURE CRYPTOGRAPHIC</text>
+      <text x="1220" y="415" text-anchor="middle">CORE</text>
+      <rect x="1102" y="432" width="236" height="30" rx="5" fill="none" stroke="#3a2f12" stroke-width="1"/>
+      <text x="1220" y="451" text-anchor="middle" font-size="9" fill="#7a6a2f">ISOLATED DIE • TAMPER MESH</text>
+    </g>
+    <g class="component interact courier" id="courier">
+      <rect x="1070" y="530" width="300" height="110" rx="8"/>
+      <text x="1220" y="560" text-anchor="middle">EPHEMERAL COURIER MODULE</text>
+      <text x="1220" y="580" text-anchor="middle">(Volatile SRAM)</text>
+      <g id="sram-cells" transform="translate(1098,595)"></g>
+    </g>
+    <g class="component interact tactile" id="tactile">
+      <rect x="1200" y="680" width="280" height="110" rx="8"/>
+      <text x="1340" y="713" text-anchor="middle">PHYSICAL TACTILE</text>
+      <text x="1340" y="733" text-anchor="middle">CONFIRM SWITCH</text>
+      <circle cx="1340" cy="763" r="14" fill="#050505" stroke="#D4AF37" stroke-width="2"/>
+      <circle cx="1340" cy="763" r="7" fill="#D4AF37" opacity="0.65" class="switch-dot"/>
+    </g>
+  </svg>
+
+  <div id="tooltip"></div>
+
+  <div class="legend">
+    <h4>INTERACTIONS</h4>
+    <ul>
+      <li><strong>Click</strong> IR beams → Manchester encoding</li>
+      <li><strong>Hover</strong> PV array → isolated power flow</li>
+      <li><strong>Hover</strong> NFC loop → mechanical gate</li>
+      <li><strong>Hover</strong> Courier → volatile SRAM</li>
+      <li><strong>Click</strong> Core → FIPS 140-3</li>
+      <li><strong>Click</strong> Switch → full TX flow</li>
+    </ul>
+  </div>
+
+  <div class="caption">Availability is never privileged over integrity</div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tooltip = document.getElementById('tooltip');
+  const wrap = document.querySelector('.wrap');
+  const schematic = document.getElementById('schematic');
+
+  function showTip(html, clientX, clientY) {
+    const r = wrap.getBoundingClientRect();
+    tooltip.innerHTML = html;
+    let x = clientX - r.left + 14;
+    let y = clientY - r.top - 12;
+    if (x > r.width - 280) x = clientX - r.left - 270;
+    if (y < 20) y = clientY - r.top + 18;
+    x = Math.max(10, Math.min(x, r.width - tooltip.offsetWidth - 10));
+    y = Math.max(10, y);
+    tooltip.style.left = x + 'px';
+    tooltip.style.top = y + 'px';
+    tooltip.classList.add('show');
+    clearTimeout(showTip.t);
+    showTip.t = setTimeout(()=>tooltip.classList.remove('show'), 3200);
+  }
+
+  // Build PV cells
+  const pv = document.getElementById('pv-cells');
+  for(let r=0;r<3;r++){
+    for(let c=0;c<6;c++){
+      const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+      rect.setAttribute('x', c*39);
+      rect.setAttribute('y', r*23);
+      rect.setAttribute('width', 35);
+      rect.setAttribute('height', 19);
+      rect.setAttribute('rx', 2);
+      rect.setAttribute('class', 'pv-cell');
+      pv.appendChild(rect);
+    }
+  }
+
+  // Build SRAM
+  const sram = document.getElementById('sram-cells');
+  for(let i=0;i<48;i++){
+    const x = (i%12)*20.5;
+    const y = Math.floor(i/12)*12;
+    const r = document.createElementNS('http://www.w3.org/2000/svg','rect');
+    r.setAttribute('x', x); r.setAttribute('y', y);
+    r.setAttribute('width', 17); r.setAttribute('height', 8);
+    r.setAttribute('rx', 1); r.setAttribute('class','sram-cell');
+    r.style.animationDelay = (Math.random()*0.9)+'s';
+    sram.appendChild(r);
+  }
+
+  // Dust particles
+  const dustG = document.getElementById('dust');
+  for(let i=0;i<26;i++){
+    const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('cx', 722 + Math.random()*156);
+    c.setAttribute('cy', 160 + Math.random()*660);
+    c.setAttribute('r', Math.random()*1.1 + 0.3);
+    c.setAttribute('class','dust');
+    c.style.animationDelay = (Math.random()*9)+'s';
+    c.style.animationDuration = (7+Math.random()*5)+'s';
+    dustG.appendChild(c);
+  }
+
+  // IR click
+  document.getElementById('ir-beams').addEventListener('click', (e)=>{
+    showTip('IR Manchester Encoding — photons only, no electrical connection', e.clientX, e.clientY);
+    launchManchester(false);
+    pulseEl(document.getElementById('tx-left'), 600);
+    pulseEl(document.getElementById('rx-right'), 900);
+  });
+
+  function launchManchester(reverse=false){
+    const g = document.getElementById('manchester-animation');
+    const y = reverse ? 502.5 : 392.5;
+    const x1 = reverse ? 910 : 630;
+    const x2 = reverse ? 630 : 910;
+    const bits = reverse ? [0,1,1,0,1] : [1,0,1,0];
+
+    bits.forEach((b,i)=>{
+      const grp = document.createElementNS('http://www.w3.org/2000/svg','g');
+      grp.setAttribute('opacity','0');
+      grp.innerHTML = `<circle cx="0" cy="0" r="10" fill="#FFD700" filter="url(#gold-glow)"/><text x="0" y="3.5" text-anchor="middle" font-size="10" fill="#000" font-weight="700" font-family="monospace">${b}</text>`;
+      g.appendChild(grp);
+      const start = performance.now() + i*150;
+      const dur = 1400;
+      function frame(t){
+        const p = Math.min(1, (t-start)/dur);
+        if(p<0){ requestAnimationFrame(frame); return; }
+        const x = x1 + (x2-x1)*p;
+        const ease = 1 - Math.pow(1-p, 2);
+        grp.setAttribute('transform', `translate(${x},${y})`);
+        grp.setAttribute('opacity', p<0.08 ? p/0.08 : p>0.88 ? (1-p)/0.12 : 1);
+        if(p<1) requestAnimationFrame(frame); else grp.remove();
+      }
+      requestAnimationFrame(frame);
+    });
+    document.getElementById(reverse?'beam-rx':'beam-tx').classList.add('active');
+    setTimeout(()=>document.getElementById(reverse?'beam-rx':'beam-tx').classList.remove('active'), 1700);
+  }
+
+  // PV hover
+  const pvArray = document.getElementById('pv-array');
+  const pvTrace = document.getElementById('t-pv-core');
+  pvArray.addEventListener('mouseenter', (e)=>{
+    pvArray.classList.add('active');
+    pvTrace.classList.add('flowing','active');
+    showTip('Isolated photovoltaic harvest — laser power → 3.3V isolated rail', e.clientX, e.clientY);
+  });
+  pvArray.addEventListener('mouseleave', ()=>{
+    pvArray.classList.remove('active');
+    pvTrace.classList.remove('flowing','active');
+  });
+
+  // NFC hover
+  document.getElementById('nfc-loop').addEventListener('mouseenter', (e)=>{
+    showTip('Mechanical break — NFC coil only connects when spring is physically pressed', e.clientX, e.clientY);
+  });
+
+  // Courier hover
+  const courier = document.getElementById('courier');
+  courier.addEventListener('mouseenter', (e)=>{
+    courier.classList.add('active');
+    showTip('Volatile SRAM — zeroizes on power loss, <200ms decay, no persistence', e.clientX, e.clientY);
+  });
+  courier.addEventListener('mouseleave', ()=>courier.classList.remove('active'));
+
+  // Core click
+  document.getElementById('core').addEventListener('click', (e)=>{
+    pulseEl(e.currentTarget, 1200);
+    showTip('FIPS 140-3 Level 4 isolated core — active shield, mesh tamper, zeroized on breach', e.clientX, e.clientY);
+  });
+
+  // Tactile switch full flow
+  let running = false;
+  document.getElementById('tactile').addEventListener('click', async (e)=>{
+    if(running) return; running=true;
+    const t = e.currentTarget;
+    t.classList.add('active');
+    showTip('Physical confirm → initiating isolated signing ceremony', e.clientX, e.clientY-30);
+
+    const seq = [
+      ['mcu',200], ['t-mcu-tx',180], ['tx-left',220],
+      ['beam',()=>launchManchester(false),300],
+      ['rx-right',200], ['t-core-rx',180], ['core',300],
+      ['t-core-courier',200], ['courier',350],
+      ['t-core-courier',150], ['core',180],
+      ['t-core-tx',200], ['tx-right',200],
+      ['beam2',()=>launchManchester(true),320],
+      ['rx-left',200], ['t-mcu-rx',180], ['mcu',200],
+      ['t-mcu-eink',250], ['eink',600]
+    ];
+    for(const [id,delay,fn] of seq.map(s=>[s[0],s[1],s[2]])){
+      if(id==='beam' || id==='beam2'){ if(typeof delay==='function') delay(); await wait(typeof fn==='number'?fn:300); continue; }
+      const el = document.getElementById(id) || document.querySelector(`#${id}`);
+      if(el) pulseEl(el, 400);
+      await wait(typeof delay==='number'?delay:250);
+    }
+    t.classList.remove('active');
+    await wait(400);
+    showTip('Transaction complete — signature verified, displayed on e-ink. Air-gap never breached.', 820, 760);
+    running=false;
+  });
+
+  function pulseEl(el, ms=500){
+    if(!el) return;
+    el.classList.add('active');
+    setTimeout(()=>el.classList.remove('active'), ms);
+  }
+  function wait(ms){ return new Promise(r=>setTimeout(r,ms)); }
+
+  // Subtle idle pulses
+  setInterval(()=>{
+    if(Math.random()<0.3) pulseEl(document.getElementById('laser-driver'), 300);
+  }, 4000);
+});
+</script>
+</body>
+</html>

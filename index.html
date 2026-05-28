@@ -1,489 +1,552 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RJ (VrtxOmega) — Developer · VibeJam 2026 2nd Place</title>
-<meta name="description" content="RJ Lopez — from zero coding knowledge to winning 2nd Place at VibeJam 2026 in 12 weeks. Built on a laptop. Zero dependencies. VERITAS ecosystem.">
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://vrtxomega.github.io/veritas-portfolio/" />
-<meta property="og:title" content="RJ Lopez — VibeJam 2026 2nd Place · Sovereign AI Builder" />
-<meta property="og:description" content="From zero coding experience to 2nd Place at VibeJam 2026 in 12 weeks. Built 36 repos, 5 MCP servers, and a SHA-256 credentialing engine. Now seeking first paid work." />
-<meta property="og:image" content="https://vrtxomega.github.io/veritas-portfolio/img/breakaway-landing.png" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@RJLopezAI" />
-<meta name="twitter:title" content="RJ Lopez — VibeJam 2026 2nd Place · Sovereign AI Builder" />
-<meta name="twitter:description" content="From zero coding experience to 2nd Place at VibeJam 2026 in 12 weeks. Built 36 repos, 5 MCP servers, and a SHA-256 credentialing engine." />
-<meta name="twitter:image" content="https://vrtxomega.github.io/veritas-portfolio/img/breakaway-landing.png" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RJ Lopez — Builder-Operator. Local-first tools, Linux systems, Android mesh command center, Tailscale, YubiKey, Tauri, Python, and technical documentation.">
+    <link rel="canonical" href="https://vrtxomega.github.io/veritas-portfolio/">
+    <meta property="og:title" content="RJ Lopez — Builder-Operator">
+    <meta property="og:description" content="Five proof points: Breakaway, Shell Trials, Omega SMC, coders-bible, and YubiKey/Tailscale mesh.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vrtxomega.github.io/veritas-portfolio/">
+    <meta property="og:image" content="https://vrtxomega.github.io/veritas-portfolio/assets/breakaway.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="RJ Lopez — Builder-Operator">
+    <meta name="twitter:description" content="Five proof points: Breakaway, Shell Trials, Omega SMC, coders-bible, and YubiKey/Tailscale mesh.">
+    <meta name="twitter:image" content="https://vrtxomega.github.io/veritas-portfolio/assets/breakaway.jpg">
+    <title>RJ Lopez — Builder-Operator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { color-scheme: dark; }
+        * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        html,
+        body {
+            overflow-x: hidden;
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0b;
+            color: #e5e5e5;
+        }
+        .mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+
+        .card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .card:hover {
+            border-color: rgba(34, 211, 238, 0.25);
+            background: linear-gradient(180deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.03) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px -20px rgba(0,0,0,0.9), 0 0 0 1px rgba(34,211,238,0.08) inset;
+        }
+
+        .accent-cyan { color: #22d3ee; }
+        .accent-gold { color: #f5c542; }
+
+        .glow-orb {
+            position: fixed;
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(34,211,238,0.1) 0%, rgba(245,197,66,0.06) 25%, transparent 60%);
+            pointer-events: none;
+            filter: blur(80px);
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .grid-bg {
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .ascii-box {
+            background: rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        ::selection { background: rgba(34,211,238,0.3); color: white; }
+    </style>
 </head>
-<body>
+<body class="relative">
+    <div class="grid-bg"></div>
+    <div id="glow" class="glow-orb"></div>
 
-<!-- ═══ NAV ═══ -->
-<nav id="navbar">
-  <div class="nav-inner">
-    <a href="#" class="nav-logo"><span class="omega-mark">Ω</span> VERITAS</a>
-    <div class="nav-links">
-      <a href="#story">My Story</a>
-      <a href="#breakaway">Breakaway</a>
-      <a href="#projects">Projects</a>
-      <a href="#writing">Writing</a>
-      <a href="#hire">Hire Me</a>
-    </div>
-    <div class="nav-socials">
-      <a href="https://github.com/VrtxOmega" target="_blank" aria-label="GitHub">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-      </a>
-      <a href="https://linkedin.com/in/RJlopezAI" target="_blank" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-      </a>
-    </div>
-    <div class="hamburger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </div>
-  </div>
-</nav>
+    <main class="relative z-10 max-w-[980px] mx-auto px-6 md:px-8">
+        <!-- Header -->
+        <header class="pt-20 md:pt-28 pb-16 md:pb-20">
+            <div class="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] backdrop-blur">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22d3ee] opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-[#22d3ee]"></span>
+                </span>
+                <span class="text-xs tracking-wide text-neutral-400">Available for hire</span>
+            </div>
 
-<!-- ═══ HERO ═══ -->
-<section class="hero" id="home">
-  <canvas id="particles"></canvas>
-  <div class="hero-content">
-    <div class="hero-badge">
-      <div class="badge-icon">2ND</div>
-      <div class="badge-text">VIBEJAM 2026 — CHOOSE YOUR OWN STACK</div>
-    </div>
-    <h1>FROM ZERO TO SECOND PLACE</h1>
-    <p class="subtitle">12 weeks. One laptop. Zero prior coding experience.</p>
-    <p class="tagline">Built Breakaway — a zero-dependency credentialing engine — and won 2nd place at the world's largest AI-coding competition.</p>
-    <div class="hero-cta">
-      <a href="https://vrtxomega.github.io/breakaway/" target="_blank" class="cta-primary">TRY LIVE DEMO</a>
-      <a href="#breakaway" class="cta-secondary">VIEW BREAKAWAY</a>
-      <a href="#hire" class="cta-secondary">HIRE ME</a>
-    </div>
-  </div>
-</section>
+            <h1 class="text-[42px] md:text-[64px] lg:text-[72px] font-semibold leading-[0.9] mb-6">
+                RJ Lopez
+                <br>
+                <span class="text-neutral-500">—</span>
+                <span class="bg-gradient-to-r from-[#e5e5e5] via-[#22d3ee] to-[#f5c542] bg-clip-text text-transparent">Builder-Operator</span>
+            </h1>
 
-<!-- ═══ METRICS ═══ -->
-<section class="metrics">
-  <div class="metrics-inner">
-    <div class="metric">
-      <div class="num" data-target="36">0</div>
-      <div class="label">Projects Built</div>
-    </div>
-    <div class="metric">
-      <div class="num" data-target="500">0</div>
-      <div class="label">Commits</div>
-    </div>
-    <div class="metric">
-      <div class="num" data-target="90">0</div>
-      <div class="label">Day Streak</div>
-    </div>
-    <div class="metric">
-      <div class="num" data-target="12">0</div>
-      <div class="label">Weeks Coding</div>
-    </div>
-  </div>
-</section>
+            <p class="text-[18px] md:text-[20px] leading-relaxed text-neutral-300 max-w-[640px] font-light">
+                I build local-first tools I can operate, verify, and recover.
+            </p>
+            <p class="text-[15px] text-neutral-500 mt-3">
+                Former cleanroom tech → 14 weeks shipping.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2.5 text-[12px] md:text-[13px] text-neutral-300">
+                <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">5 proof points</span>
+                <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">Linux-first</span>
+                <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">local-first</span>
+                <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">Android/Kotlin</span>
+                <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">Tauri</span>
+                <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">Python</span>
+                <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">Tailscale</span>
+                <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">YubiKey</span>
+            </div>
+        </header>
 
-<!-- ═══ MY STORY ═══ -->
-<section class="section" id="story">
-  <h2 class="section-title reveal">My Story</h2>
-  <p class="section-subtitle reveal">From cleanroom certification technician to VibeJam winner — in 12 weeks, on a laptop, with 1 day off.</p>
+        <!-- Thesis -->
+        <section class="border-y border-white/10 py-8 md:py-10 mb-8">
+            <div class="grid md:grid-cols-12 gap-6 md:gap-8">
+                <div class="md:col-span-8">
+                    <h2 class="mono text-[11px] uppercase text-neutral-500 mb-3">Operating principle</h2>
+                    <p class="text-[16px] md:text-[18px] leading-relaxed text-neutral-200">
+                        My work follows one rule: AI output is not truth until it survives verification. That shows up as deterministic scoring in Breakaway, simulated command validation in Shell Trials, receipt-based operation in Omega SMC, offline packaging in coders-bible, and hardware-backed recovery in my YubiKey/Tailscale mesh.
+                    </p>
+                </div>
+                <div class="md:col-span-4 md:border-l md:border-white/10 md:pl-6">
+                    <h2 class="mono text-[11px] uppercase text-neutral-500 mb-3">Open-source proof</h2>
+                    <p class="text-[14px] leading-relaxed text-neutral-300">
+                        Upstream contributor to Linux desktop compatibility and Pop!_OS workflow fixes, with review-friendly PR discipline and reproducible verification notes.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-  <div class="story-grid reveal">
-    <div class="story-photo">
-      <img src="img/headshot.jpg" alt="RJ Lopez — VibeJam 2026 2nd Place Winner" onerror="this.style.display='none'">
-      <p class="caption">RJ Lopez — Illinois, USA</p>
-    </div>
-    <div class="story-text">
-      <p><strong>I started coding on February 12, 2026.</strong> Before that, I was a field service technician certifying cleanrooms — BSL-2 and BSL-3 environments, PECs, AVS studies, the full compliance stack. High-stakes work where a single particle count or airflow deviation means a facility shuts down. I knew nothing about software.</p>
+        <!-- Cards -->
+        <section class="space-y-6 md:space-y-8 pb-24">
 
-      <p>Before the cleanroom work, I spent years as a thermal spray technician on NASA contracts. I was one of two people my company allowed to spray silver graphene composite — not because it was hard to learn, but because the tolerances were microscopic and the material was expensive enough that a mistake cost more than a car. Precision under pressure was the job.</p>
+            <!-- 1. Breakaway Protocol -->
+            <article class="card rounded-[24px] p-6 md:p-8 lg:p-10 group">
+                <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+                    <div class="lg:col-span-7 min-w-0">
+                        <div class="flex items-start gap-4 mb-5">
+                            <span class="mono text-[13px] accent-gold mt-1.5 shrink-0">01</span>
+                            <div>
+                                <h2 class="text-[22px] md:text-[26px] font-semibold leading-snug">Breakaway Protocol — Proof I can ship</h2>
+                                <p class="text-[15px] text-neutral-400 mt-2.5 leading-relaxed">Zero-dependency credential engine, deterministic scoring, SHA-256 sealed, 2nd place VibeJam</p>
+                            </div>
+                        </div>
 
-      <p>Then I discovered AI-assisted development. I went all in. <strong>One day off in 12 weeks.</strong> All of it unpaid. All of it on an MSI Raider GE78 — i9, RTX 4070, 32GB DDR5. A beast of a machine. But running Android Studio + emulator + a web stack simultaneously turned it into a space heater with a keyboard. Thermal throttling, context-switching overhead, Gradle indexing grinding everything to a halt.</p>
+                        <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-black/50 ml-0 lg:ml-[28px]">
+                            <img src="./assets/breakaway.jpg" alt="Breakaway Protocol credential showing SHA-256 hash" class="w-full h-auto object-cover" loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+                            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                                <span class="mono text-[10px] px-2 py-1 rounded bg-black/70 border border-white/10 text-neutral-300">SHA-256 sealed</span>
+                                <span class="mono text-[10px] px-2 py-1 rounded bg-[#f5c542]/20 border border-[#f5c542]/30 text-[#f5c542]">VibeJam #2</span>
+                            </div>
+                        </div>
+                    </div>
 
-      <p>So I made a deliberate choice: <strong>stop fighting the toolchain and remove the toolchain entirely.</strong> Zero dependencies. Zero build steps. Pure browser-native code that opens instantly in any tab, on any device, with nothing to install. That thermal-engineering decision became my competitive advantage. While other developers were waiting for Gradle sync and emulator boot, my code was already running.</p>
+                    <div class="lg:col-span-5 min-w-0 lg:pl-6 lg:border-l lg:border-white/[0.06]">
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="mono text-[11px] uppercase tracking-[0.14em] accent-cyan mb-3 flex items-center gap-2">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    What it proves
+                                </h3>
+                                <p class="text-[14px] leading-[1.65] text-neutral-300">public product instinct, frontend polish, deterministic credentialing, and a clean story strangers can understand quickly.</p>
+                            </div>
+                            <div>
+                                <h3 class="mono text-[11px] uppercase tracking-[0.14em] accent-gold mb-3 flex items-center gap-2">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                    Failure mode
+                                </h3>
+                                <p class="text-[14px] leading-[1.65] text-neutral-300">handles tampering via SHA-256 seal — any edit invalidates hash</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-      <div class="story-highlight">
-        <p>"I have an i9/4070 laptop that can absolutely run Android Studio. But it thermal-throttles when you stack mobile toolchain + emulator + web stack + AI assistant all at once. So I built Breakaway with zero dependencies — no build step, no bundler, no IDE lock-in. It won 2nd place at VibeJam because it just works."</p>
-      </div>
+            <!-- 2. Shell Trials -->
+            <article class="card rounded-[24px] p-6 md:p-8 lg:p-10 group">
+                <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+                    <div class="lg:col-span-7 min-w-0">
+                        <div class="flex items-start gap-4 mb-5">
+                            <span class="mono text-[13px] accent-gold mt-1.5 shrink-0">02</span>
+                            <div>
+                                <h2 class="text-[22px] md:text-[26px] font-semibold leading-snug">Shell Trials — Proof I can teach systems</h2>
+                                <p class="text-[15px] text-neutral-400 mt-2.5 leading-relaxed">Terminal RPG that teaches Linux by doing, not reading</p>
+                            </div>
+                        </div>
 
-      <p>In those 12 weeks I built <strong>36 repositories</strong> spanning the VERITAS ecosystem — credentialing engines, MCP servers, desktop applications, security tools, and AI infrastructure. Every line validated, every project tested.</p>
+                        <div class="space-y-3 ml-0 lg:ml-[28px]">
+                            <div class="relative overflow-hidden rounded-xl border border-white/10 bg-black">
+                                <img src="./assets/shell-trials-menu.jpg" alt="Shell Trials main menu" class="w-full h-auto" loading="lazy">
+                            </div>
+                            <div class="relative overflow-hidden rounded-xl border border-white/10 bg-black">
+                                <img src="./assets/shell-trials-mission.jpg" alt="Shell Trials mission screen" class="w-full h-auto" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
 
-      <p>Now I'm cleaning house — archiving what served its purpose, polishing what matters, and seeking my first paid work. I'm not a salesman. I'm a builder. And I build things that work.</p>
-    </div>
-  </div>
-</section>
+                    <div class="lg:col-span-5 min-w-0 lg:pl-6 lg:border-l lg:border-white/[0.06]">
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="mono text-[11px] uppercase tracking-[0.14em] accent-cyan mb-3 flex items-center gap-2">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    What it proves
+                                </h3>
+                                <p class="text-[14px] leading-[1.65] text-neutral-300">Python, simulated shell behavior, educational design, command-line fluency, and learning deeply enough to teach it.</p>
+                            </div>
+                            <div>
+                                <h3 class="mono text-[11px] uppercase tracking-[0.14em] accent-gold mb-3 flex items-center gap-2">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10z"/></svg>
+                                    Failure mode
+                                </h3>
+                                <p class="text-[14px] leading-[1.65] text-neutral-300">invalid commands don't crash — parser guides with <span class="mono text-[#22d3ee]">why &lt;cmd&gt;</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-<!-- ═══ BREAKAWAY ═══ -->
-<section class="section" id="breakaway">
-  <h2 class="section-title reveal">Breakaway</h2>
-  <p class="section-subtitle reveal">The credentialing engine that won 2nd Place at VibeJam 2026. Zero dependencies. Browser-native. 14 challenges. 46 tests. CI/CD.</p>
+            <!-- 3. Omega SMC -->
+            <article class="card rounded-[24px] p-6 md:p-8 lg:p-10 group">
+                <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+                    <div class="lg:col-span-7 min-w-0">
+                        <div class="flex items-start gap-4 mb-5">
+                            <span class="mono text-[13px] accent-gold mt-1.5 shrink-0">03</span>
+                            <div>
+                                <h2 class="text-[22px] md:text-[26px] font-semibold leading-snug">Omega SMC — Proof I can operate infrastructure</h2>
+                                <p class="text-[15px] text-neutral-400 mt-2.5 leading-relaxed">Android mesh command center for a private Tailscale operator network</p>
+                            </div>
+                        </div>
 
-  <div class="breakaway-hero reveal">
-    <div class="breakaway-info">
-      <h3>Breakaway</h3>
-      <span class="tag">VibeJam 2026 — 2nd Place</span>
-      <p>A zero-dependency, browser-native credentialing engine with 14 cognitive challenges across 5 domains that generate tamper-proof SHA-256 verified skill credentials. No frameworks. No build tools. Pure vanilla JavaScript.</p>
-      <p>Built in the same week I was competing against 945+ developers worldwide — while also building two other apps and maintaining side projects. Breakaway won because it runs everywhere while competitors needed heavy toolchains.</p>
-      <div class="breakaway-stats">
-        <div class="breakaway-stat"><div class="n">14</div><div class="l">Challenges</div></div>
-        <div class="breakaway-stat"><div class="n">46</div><div class="l">Tests Passing</div></div>
-        <div class="breakaway-stat"><div class="n">0</div><div class="l">Dependencies</div></div>
-      </div>
-      <div class="breakaway-cta-row">
-        <a href="https://vrtxomega.github.io/breakaway/" target="_blank" class="cta-primary">TRY LIVE DEMO</a>
-      </div>
-    </div>
-    <div class="breakaway-img">
-      <img src="img/breakaway-landing.png" alt="Breakaway credentialing engine — landing page" style="width:100%; border-radius:8px;">
-    </div>
-  </div>
+                        <div class="ml-0 lg:ml-[28px]">
+                            <div class="overflow-hidden rounded-2xl border border-white/10 bg-black/70">
+                                <img src="./assets/omega-smc.jpg" alt="Omega SMC Mission Control Android screen showing healthy mesh status and mission feed" class="w-full max-h-[560px] object-contain bg-black" loading="lazy">
+                                <div class="flex flex-wrap items-center gap-2 border-t border-white/10 p-3">
+                                    <span class="mono text-[10px] px-2 py-1 rounded bg-black/75 border border-white/10 text-neutral-300">actual phone-side view</span>
+                                    <span class="mono text-[10px] px-2 py-1 rounded bg-[#22d3ee]/20 border border-[#22d3ee]/30 text-[#22d3ee]">mesh healthy</span>
+                                    <span class="mono text-[10px] px-2 py-1 rounded bg-[#f5c542]/20 border border-[#f5c542]/30 text-[#f5c542]">mission receipts</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-  <h3 class="section-title reveal" style="font-size:1.4rem; margin-top:60px;">Architecture</h3>
-  <div class="arch-grid reveal">
-    <div class="arch-card">
-      <div class="icon">⚡</div>
-      <h4>Vanilla JavaScript</h4>
-      <p>No frameworks, no build step, no bundler. Pure browser-native JS that runs instantly on any device. Refactored from 1,324-line monolith into 9 focused modules.</p>
-    </div>
-    <div class="arch-card">
-      <div class="icon">🔐</div>
-      <h4>WebCrypto SHA-256</h4>
-      <p>Browser-native cryptography for tamper-proof credential hashing. No external crypto libraries. Self-contained verification pages you can download and share offline.</p>
-    </div>
-    <div class="arch-card">
-      <div class="icon">🧪</div>
-      <h4>Test-Driven</h4>
-      <p>46 passing tests (32 scoring + 14 registry validation). GitHub Actions CI on every push. Guest mode for anonymous play with soft nudges — no forced signup.</p>
-    </div>
-  </div>
+                    <div class="lg:col-span-5 min-w-0 lg:pl-6 lg:border-l lg:border-white/[0.06]">
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="mono text-[11px] uppercase tracking-[0.14em] accent-cyan mb-3 flex items-center gap-2">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    What it proves
+                                </h3>
+                                <p class="text-[14px] leading-[1.65] text-neutral-300">Android/Kotlin, Room, Tailscale-aware infrastructure, local AI fallback, secure execution design, audit logging, and real operational ownership.</p>
+                            </div>
+                            <div>
+                                <h3 class="mono text-[11px] uppercase tracking-[0.14em] accent-gold mb-3 flex items-center gap-2">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                    Failure mode
+                                </h3>
+                                <p class="text-[14px] leading-[1.65] text-neutral-300">high-risk actions use proposal, preview, and queue semantics instead of arbitrary shell execution; phone-side mesh checks prevent desktop-only false confidence.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-  <h3 class="section-title reveal" style="font-size:1.4rem; margin-top:60px;">Challenge Gallery</h3>
-  <div class="breakaway-img reveal" style="margin-bottom:24px;">
-    <img src="img/breakaway-challenges.png" alt="Breakaway challenge dashboard showing 14 skill challenges across 5 domains" style="width:100%; border-radius:8px;">
-  </div>
+            <!-- 4. coders-bible-desktop -->
+            <article class="card rounded-[24px] p-6 md:p-8 lg:p-10 group">
+                <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+                    <div class="lg:col-span-7 min-w-0">
+                        <div class="flex items-start gap-4 mb-5">
+                            <span class="mono text-[13px] accent-gold mt-1.5 shrink-0">04</span>
+                            <div>
+                                <h2 class="text-[22px] md:text-[26px] font-semibold leading-snug">coders-bible-desktop — Proof I can package</h2>
+                                <p class="text-[15px] text-neutral-400 mt-2.5 leading-relaxed">Offline Tauri knowledge engine with 67,000+ fragments, zero cloud dependency</p>
+                            </div>
+                        </div>
 
-  <h3 class="section-title reveal" style="font-size:1.4rem; margin-top:60px;">Credential Lifecycle</h3>
-  <div class="arch-grid reveal">
-    <div class="arch-card">
-      <div class="icon">1</div>
-      <h4>Challenge</h4>
-      <p>User completes a cognitive skill challenge — timed, scored, validated.</p>
-    </div>
-    <div class="arch-card">
-      <div class="icon">2</div>
-      <h4>Hash</h4>
-      <p>Performance data is hashed using WebCrypto SHA-256 in the browser.</p>
-    </div>
-    <div class="arch-card">
-      <div class="icon">3</div>
-      <h4>Sign</h4>
-      <p>Credential is cryptographically signed and bound to the user's identity.</p>
-    </div>
-    <div class="arch-card">
-      <div class="icon">4</div>
-      <h4>Store</h4>
-      <p>Persisted to localStorage for offline access. Guest mode saves progress without signup.</p>
-    </div>
-    <div class="arch-card">
-      <div class="icon">5</div>
-      <h4>Verify</h4>
-      <p>Third parties can verify credential integrity by re-hashing and comparing. QR code + downloadable HTML verifier included.</p>
-    </div>
-    <div class="arch-card">
-      <div class="icon">6</div>
-      <h4>Share</h4>
-      <p>Export as portable JSON, generate QR codes, or download a self-contained verification page for instant proof.</p>
-    </div>
-  </div>
-</section>
+                        <div class="ml-0 lg:ml-[28px]">
+                            <div class="grid grid-cols-3 gap-3">
+                                <div class="ascii-box rounded-xl p-4 text-center">
+                                    <div class="text-[24px] font-semibold accent-cyan mb-1">67k+</div>
+                                    <div class="mono text-[10px] uppercase tracking-wide text-neutral-500">fragments</div>
+                                </div>
+                                <div class="ascii-box rounded-xl p-4 text-center">
+                                    <div class="text-[24px] font-semibold accent-gold mb-1">0</div>
+                                    <div class="mono text-[10px] uppercase tracking-wide text-neutral-500">API calls</div>
+                                </div>
+                                <div class="ascii-box rounded-xl p-4 text-center">
+                                    <div class="text-[24px] font-semibold text-neutral-200 mb-1">100%</div>
+                                    <div class="mono text-[10px] uppercase tracking-wide text-neutral-500">offline</div>
+                                </div>
+                            </div>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] mono text-neutral-300">Tauri</span>
+                                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] mono text-neutral-300">Rust</span>
+                                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] mono text-neutral-300">SQLite</span>
+                                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] mono text-neutral-300">local-first</span>
+                            </div>
+                        </div>
+                    </div>
 
-<!-- ═══ PROJECTS ═══ -->
-<section class="section" id="projects">
-  <h2 class="section-title reveal">Projects</h2>
-  <p class="section-subtitle reveal">36 repositories in 12 weeks. The VERITAS ecosystem — built with conviction, validated with discipline.</p>
+                    <div class="lg:col-span-5 min-w-0 lg:pl-6 lg:border-l lg:border-white/[0.06]">
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="mono text-[11px] uppercase tracking-[0.14em] accent-cyan mb-3 flex items-center gap-2">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    What it proves
+                                </h3>
+                                <p class="text-[14px] leading-[1.65] text-neutral-300">desktop packaging, local-first architecture, search UX, offline distribution, and deterministic no-network constraints.</p>
+                            </div>
+                            <div>
+                                <h3 class="mono text-[11px] uppercase tracking-[0.14em] accent-gold mb-3 flex items-center gap-2">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10z"/></svg>
+                                    Failure mode
+                                </h3>
+                                <p class="text-[14px] leading-[1.65] text-neutral-300">works fully offline, no API keys to leak</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-  <div class="projects-grid reveal">
-    <!-- Breakaway -->
-    <div class="project-card featured">
-      <div class="top">
-        <h4>Breakaway</h4>
-        <span class="lang">JS/CSS/HTML</span>
-      </div>
-      <p>VibeJam 2026 2nd Place credentialing engine. Zero-dependency, browser-native, SHA-256 verified skill credentials. 14 cognitive challenges across 5 domains. 46 tests. Guest mode. CI/CD.</p>
-      <div class="meta">
-        <span class="stars">38</span>
-        <span>JS</span>
-      </div>
-      <a href="https://github.com/VrtxOmega/breakaway" target="_blank" class="project-link">→ View on GitHub</a>
-    </div>
+            <!-- 5. YubiKey + Tailscale -->
+            <article class="card rounded-[24px] p-6 md:p-8 lg:p-10 group">
+                <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+                    <div class="lg:col-span-7 min-w-0">
+                        <div class="flex items-start gap-4 mb-5">
+                            <span class="mono text-[13px] accent-gold mt-1.5 shrink-0">05</span>
+                            <div>
+                                <h2 class="text-[22px] md:text-[26px] font-semibold leading-snug">YubiKey/FIDO2 + Tailscale Mesh — Proof I understand failure modes</h2>
+                                <p class="text-[15px] text-neutral-400 mt-2.5 leading-relaxed">Hardened Linux auth and recovery setup with tailnet-only SSH and closed inbound ports</p>
+                            </div>
+                        </div>
 
-    <!-- Omega Brain MCP -->
-    <div class="project-card">
-      <div class="top">
-        <h4>Omega Brain MCP</h4>
-        <span class="lang">Python</span>
-      </div>
-      <p>Triple-A rated Glama MCP server. Sovereign AI knowledge retention with provenance RAG, SEAL audit ledger, and Cortex governance gates.</p>
-      <div class="meta">
-        <span class="stars">12</span>
-        <span>Python</span>
-      </div>
-      <a href="https://github.com/VrtxOmega/omega-brain-mcp" target="_blank" class="project-link">→ View on GitHub</a>
-    </div>
+                        <div class="ml-0 lg:ml-[28px]">
+                            <div class="ascii-box rounded-xl p-4 md:p-5 overflow-x-auto">
+                                <pre class="mono text-[11px] md:text-[12px] leading-[1.4] text-neutral-300"><span class="text-neutral-500"># operator mesh — public inbound closed</span>
+ ┌─────────────┐   YubiKey + PAM    ┌──────────────┐
+ │   laptop    │ ─────────────────► │ <span class="accent-cyan">tailscale0</span>   │
+ │  recovery   │  ssh via tailnet   │  100.x.y.z   │
+ └──────┬──────┘                    └──────┬───────┘
+        │                                  │
+        │  <span class="accent-gold">MagicDNS workflow</span>                 │
+        │  <span class="accent-gold">ufw: deny incoming</span>                │
+        │                                  ▼
+        │                           ┌──────────────┐
+        └──────────────────────────►│  <span class="accent-cyan">Linux host</span>  │
+                                    │  FIDO2 login │
+                                    │  SSH: tailnet│
+                                    │  no public SSH│
+                                    └──────────────┘</pre>
+                            </div>
+                        </div>
+                    </div>
 
-    <!-- SSWP MCP -->
-    <div class="project-card">
-      <div class="top">
-        <h4>SSWP MCP</h4>
-        <span class="lang">TypeScript</span>
-      </div>
-      <p>Sovereign Software Witness Protocol — deterministic attestation with SHA-256 sealed attestations. 131-node fleet registry.</p>
-      <div class="meta">
-        <span class="stars">8</span>
-        <span>TS</span>
-      </div>
-      <a href="https://github.com/VrtxOmega/sswp-mcp" target="_blank" class="project-link">→ View on GitHub</a>
-    </div>
+                    <div class="lg:col-span-5 min-w-0 lg:pl-6 lg:border-l lg:border-white/[0.06]">
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="mono text-[11px] uppercase tracking-[0.14em] accent-cyan mb-3 flex items-center gap-2">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    What it proves
+                                </h3>
+                                <p class="text-[14px] leading-[1.65] text-neutral-300">PAM, Linux authentication, ufw, SSH hardening, Tailscale, MagicDNS workflows, recovery planning, and documentation.</p>
+                            </div>
+                            <div>
+                                <h3 class="mono text-[11px] uppercase tracking-[0.14em] accent-gold mb-3 flex items-center gap-2">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                    Failure mode
+                                </h3>
+                                <p class="text-[14px] leading-[1.65] text-neutral-300">no public SSH exposure; recovery paths rely on known tailnet devices and hardware-backed auth instead of broad password fallback.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
 
-    <!-- Gravity Omega -->
-    <div class="project-card">
-      <div class="top">
-        <h4>Gravity Omega</h4>
-        <span class="lang">Python/Electron</span>
-      </div>
-      <p>AI-powered IDE with 60+ integrated modules. 162 commits. Monaco editor, terminal, AI agent chat, file manager, 30+ keyboard shortcuts.</p>
-      <div class="meta">
-        <span class="stars">15</span>
-        <span>Python</span>
-      </div>
-      <a href="https://github.com/VrtxOmega/Gravity-Omega" target="_blank" class="project-link">→ View on GitHub</a>
-    </div>
+        <!-- Future Architecture -->
+        <section class="border-y border-white/10 py-8 md:py-10 mb-14">
+            <div class="grid md:grid-cols-12 gap-6 md:gap-8">
+                <div class="md:col-span-5 min-w-0">
+                    <h2 class="text-[20px] md:text-[24px] font-semibold leading-snug">Light Bridge / VERITAS Wallet v3.7</h2>
+                    <p class="text-[14px] text-neutral-500 mt-2">Hardware custody architecture concept, not presented as a shipped product.</p>
+                </div>
+                <div class="md:col-span-7 min-w-0">
+                    <p class="text-[15px] leading-relaxed text-neutral-300">
+                        Included as future architecture: dual-domain isolation, IR bridge thinking, e-ink verification, and hardwired confirmation controls. The value is the threat model and physical-isolation discipline, while the shipped proof points stay focused on working software and infrastructure I personally operate.
+                    </p>
+                    <div class="mt-5 overflow-hidden rounded-xl border border-white/10 bg-black">
+                        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-4 py-3">
+                            <div>
+                                <div class="mono text-[11px] uppercase text-neutral-500">Interactive schematic</div>
+                                <div class="text-[14px] text-neutral-200 mt-1">Click IR beams, hover photovoltaic cells, and test the kinetic gate.</div>
+                            </div>
+                            <a href="./assets/light-bridge-schematic.html" class="mono text-[11px] text-[#f5c542] hover:text-[#22d3ee] transition-colors">Open full view</a>
+                        </div>
+                        <iframe
+                            title="Interactive VERITAS Light Bridge hardware schematic"
+                            src="./assets/light-bridge-schematic.html"
+                            class="block h-[420px] w-full bg-black md:h-[540px]"
+                            loading="lazy"
+                            sandbox="allow-scripts"
+                        ></iframe>
+                    </div>
+                    <details class="mt-5 min-w-0 rounded-xl border border-white/10 bg-black/40">
+                        <summary class="cursor-pointer px-4 py-3 mono text-[11px] uppercase text-neutral-300 hover:text-[#22d3ee] transition-colors">
+                            ASCII fallback sketch
+                        </summary>
+                        <div class="border-t border-white/10 overflow-x-auto p-4">
+                            <pre class="mono text-[10px] leading-[1.35] text-neutral-400">====================================== PHYSICAL ENCLOSURE (TITANIUM CHASSIS) ======================================
+|                                                                                                                 |
+|   +---------------------------------------+               +---------------------------------------+             |
+|   |            COMMAND DOMAIN             |               |            CUSTODY DOMAIN             |             |
+|   |         (External Interface)          |               |             (Secure Element)          |             |
+|   |                                       |               |                                       |             |
+|   |  +---------------------------------+  |               |  +---------------------------------+  |             |
+|   |  | Primary Power Input / Regulators |  |               |  | Isolated Photovoltaic Cell Array|  |             |
+|   |  +---------------------------------+  |               |  +---------------------------------+  |             |
+|   |                  |                    |               |                  ^                    |             |
+|   |                  v                    |               |                  |                    |             |
+|   |  +---------------------------------+  |   PHYSICAL    |                  | [Photons Only]     |             |
+|   |  | Laser / LED Power Driver Array  |--|---AIR-GAP ----|------------------+                    |             |
+|   |  +---------------------------------+  |   CHANNEL     |                                       |             |
+|   |                                       |   (Milled     |                                       |             |
+|   |  +---------------------------------+  |  Isolation    |  +---------------------------------+  |             |
+|   |  | User Interface MCU / Parser     |  |   Slots)      |  | Secure Cryptographic Core      |  |             |
+|   |  +---------------------------------+  |               |  +---------------------------------+  |             |
+|   |                  |                    |               |                  ^                    |             |
+|   |                  v                    |               |                  | [Local Bus]        |             |
+|   |  +---------------------------------+  |               |  +---------------------------------+  |             |
+|   |  | TX Infrared LED (Manchester)    |--|--[IR Beam]--&gt; |  | RX Photodiode Receiver          |  |             |
+|   |  +---------------------------------+  |               |  +---------------------------------+  |             |
+|   |                                       |               |                  |                    |             |
+|   |  +---------------------------------+  |               |                  v                    |             |
+|   |  | RX Photodiode Receiver          | &lt;=-[IR Beam]-----|--| TX Infrared LED (Manchester)    |  |             |
+|   |  +---------------------------------+  |               |  +---------------------------------+  |             |
+|   |                  ^                    |               |                  |                    |             |
+|   |                  | [Local Bus]        |               |                  v                    |             |
+|   |  +---------------------------------+  |               |  +---------------------------------+  |             |
+|   |  | Static E-Ink Display Screen      |  |               |  | EPHEMERAL COURIER MODULE       |  |             |
+|   |  +---------------------------------+  |               |  | (Volatile SRAM Scratchpad)      |  |             |
+|   |                                       |               |  +---------------------------------+  |             |
+|   |  +---------------------------------+  |               |                  ^                    |             |
+|   |  | Kinetic NFC Loop Mechanical Gate |  |               |                  | [Boolean Relay]    |             |
+|   |  | (Spring-Loaded Break Switch)    |  |               |  +---------------------------------+  |             |
+|   |  +---------------------------------+  |               |  | Physical Tactile Confirm Switch |  |             |
+|   |                                       |               |  +---------------------------------+  |             |
+|   +---------------------------------------+               +---------------------------------------+             |
+|                                                                                                                 |
+===================================================================================================================</pre>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
 
-    <!-- Aegis -->
-    <div class="project-card">
-      <div class="top">
-        <h4>Aegis</h4>
-        <span class="lang">Python</span>
-      </div>
-      <p>Security platform with 73K adversarial events processed at 0% error rate. ML-powered anomaly detection for infrastructure defense.</p>
-      <div class="meta">
-        <span class="stars">6</span>
-        <span>Python</span>
-      </div>
-      <a href="https://github.com/VrtxOmega/Aegis" target="_blank" class="project-link">→ View on GitHub</a>
-    </div>
+        <!-- Footer -->
+        <footer class="pb-20 border-t border-white/10 pt-12">
+            <div class="grid md:grid-cols-12 gap-8">
+                <div class="md:col-span-8">
+                    <h3 class="mono text-[11px] uppercase tracking-[0.14em] text-neutral-500 mb-4">Looking for roles</h3>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="px-3.5 py-2 rounded-full bg-white/[0.03] border border-white/10 text-[14px] text-neutral-200 hover:border-[#22d3ee]/30 transition-colors">Technical Support Engineer</span>
+                        <span class="px-3.5 py-2 rounded-full bg-white/[0.03] border border-white/10 text-[14px] text-neutral-200 hover:border-[#22d3ee]/30 transition-colors">QA Engineer</span>
+                        <span class="px-3.5 py-2 rounded-full bg-white/[0.03] border border-white/10 text-[14px] text-neutral-200 hover:border-[#22d3ee]/30 transition-colors">Docs Engineer</span>
+                        <span class="px-3.5 py-2 rounded-full bg-white/[0.03] border border-white/10 text-[14px] text-neutral-200 hover:border-[#22d3ee]/30 transition-colors">Developer Tools</span>
+                        <span class="px-3.5 py-2 rounded-full bg-white/[0.03] border border-white/10 text-[14px] text-neutral-200 hover:border-[#22d3ee]/30 transition-colors">Android Systems</span>
+                    </div>
+                </div>
+                <div class="md:col-span-4 md:text-right">
+                    <h3 class="mono text-[11px] uppercase tracking-[0.14em] text-neutral-500 mb-4">Contact</h3>
+                    <button id="email" class="group inline-flex items-center gap-2 text-[18px] font-medium hover:text-[#22d3ee] transition-colors">
+                        <span>r</span><span>j</span><span>@</span><span>v</span><span>r</span><span>t</span><span>x</span><span>o</span><span>m</span><span>e</span><span>g</span><span>a</span><span>.</span><span>d</span><span>e</span><span>v</span>
+                        <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                    </button>
+                    <p id="copied" class="mt-2 text-[12px] mono accent-gold opacity-0 transition-opacity">copied to clipboard</p>
+                </div>
+            </div>
 
-    <!-- OmegaWallet -->
-    <div class="project-card">
-      <div class="top">
-        <h4>OmegaWallet</h4>
-        <span class="lang">Solidity/JS</span>
-      </div>
-      <p>Ethereum wallet with 141/141 adversarial tests passed. Solidity smart contracts with comprehensive security test coverage.</p>
-      <div class="meta">
-        <span class="stars">4</span>
-        <span>Solidity</span>
-      </div>
-      <a href="https://github.com/VrtxOmega/OmegaWallet" target="_blank" class="project-link">→ View on GitHub</a>
-    </div>
+            <div class="mt-16 flex items-center justify-between text-[12px] text-neutral-600 mono">
+                <span>© 2026 RJ Lopez</span>
+                <span>local-first • verified • recoverable</span>
+            </div>
+        </footer>
+    </main>
 
-    <!-- Veritas Vault -->
-    <div class="project-card">
-      <div class="top">
-        <h4>Veritas Vault</h4>
-        <span class="lang">JavaScript</span>
-      </div>
-      <p>AI knowledge retention system with RAG vector search. Session persistence, episodic memory, and cross-session context continuity.</p>
-      <div class="meta">
-        <span class="stars">5</span>
-        <span>JS</span>
-      </div>
-      <a href="https://github.com/VrtxOmega/veritas-vault" target="_blank" class="project-link">→ View on GitHub</a>
-    </div>
+    <script>
+        // Glow follow
+        const glow = document.getElementById('glow');
+        let mouseX = 0, mouseY = 0, glowX = 0, glowY = 0;
 
-    <!-- Constellation Journal -->
-    <div class="project-card">
-      <div class="top">
-        <h4>Constellation Journal</h4>
-        <span class="lang">JavaScript</span>
-      </div>
-      <p>3D spatial journaling with Ollama embeddings. Three-dimensional note organization with semantic search and constellation visualization.</p>
-      <div class="meta">
-        <span class="stars">3</span>
-        <span>JS</span>
-      </div>
-      <a href="https://github.com/VrtxOmega/constellation-journal" target="_blank" class="project-link">→ View on GitHub</a>
-    </div>
-  </div>
-</section>
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            glow.style.opacity = '1';
+        });
 
-<!-- ═══ WRITING ═══ -->
-<section class="section" id="writing">
-  <h2 class="section-title reveal">Writing & Research</h2>
-  <p class="section-subtitle reveal">Deep dives into security, AI infrastructure, and the systems that power sovereign computing.</p>
+        function animate() {
+            glowX += (mouseX - glowX) * 0.05;
+            glowY += (mouseY - glowY) * 0.05;
+            glow.style.left = glowX + 'px';
+            glow.style.top = glowY + 'px';
+            requestAnimationFrame(animate);
+        }
+        animate();
 
-  <div class="projects-grid reveal">
-    <div class="project-card">
-      <div class="top">
-        <h4>Euler Finance Post-Mortem</h4>
-        <span class="lang">Security</span>
-      </div>
-      <p>Technical analysis of the $200M Euler Finance flash loan exploit. Traced the attack path through vulnerable donateToReserves logic, recursive borrowing, and the missing health check that made it all possible.</p>
-      <a href="https://github.com/VrtxOmega/euler-finance-postmortem" target="_blank" class="project-link">→ Read Analysis</a>
-    </div>
+        document.addEventListener('mouseleave', () => {
+            glow.style.opacity = '0';
+        });
 
-    <div class="project-card">
-      <div class="top">
-        <h4>RAG Research & Vector Search</h4>
-        <span class="lang">AI / ML</span>
-      </div>
-      <p>Comparative study of retrieval-augmented generation architectures. Evaluated embedding models, chunking strategies, and reranking pipelines for local AI deployments with zero telemetry.</p>
-      <a href="https://github.com/VrtxOmega/rag-research" target="_blank" class="project-link">→ View Research</a>
-    </div>
+        // Copy email
+        const emailBtn = document.getElementById('email');
+        const copied = document.getElementById('copied');
+        emailBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText('rj@vrtxomega.dev').then(() => {
+                copied.style.opacity = '1';
+                setTimeout(() => copied.style.opacity = '0', 2000);
+            });
+        });
 
-    <div class="project-card">
-      <div class="top">
-        <h4>VERITAS Architecture Papers</h4>
-        <span class="lang">Systems</span>
-      </div>
-      <p>Design documents for the VERITAS ecosystem — from the SEAL audit ledger chain to the Cortex governance gate system. How to build trustworthy AI infrastructure without trusting anyone.</p>
-      <a href="https://github.com/VrtxOmega/veritas-docs" target="_blank" class="project-link">→ View Papers</a>
-    </div>
-  </div>
-</section>
+        // Subtle parallax on cards
+        const cards = document.querySelectorAll('.card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
 
-<!-- ═══ HIRE ME ═══ -->
-<section class="section" id="hire">
-  <h2 class="section-title reveal">Hire Me</h2>
-  <p class="section-subtitle reveal">I build things that work. Three consulting packages — let's talk about what you need.</p>
-
-  <div class="pricing-cards reveal">
-    <div class="price-card">
-      <div class="name">Privacy Tech Audit</div>
-      <div class="price">Let's Talk</div>
-      <div class="desc">Review AI tooling for telemetry, data leakage, and compliance gaps.</div>
-      <ul>
-        <li>Full audit report</li>
-        <li>Remediation plan</li>
-        <li>3-5 business days</li>
-      </ul>
-      <a href="#contact" class="cta-secondary" style="display:block; text-align:center;">Get Started</a>
-    </div>
-
-    <div class="price-card featured">
-      <div class="name">Local AI Pilot</div>
-      <div class="price">Let's Talk</div>
-      <div class="desc">Deploy Ollama + RAG + MCP stack on your hardware. Fully local, zero telemetry.</div>
-      <ul>
-        <li>Working local AI system</li>
-        <li>Full documentation</li>
-        <li>5 business days</li>
-      </ul>
-      <a href="#contact" class="cta-primary" style="display:block; text-align:center;">Get Started</a>
-    </div>
-
-    <div class="price-card">
-      <div class="name">MCP Server Build</div>
-      <div class="price">Let's Talk</div>
-      <div class="desc">Custom MCP server for your internal API or tool. Production-ready with tests and docs.</div>
-      <ul>
-        <li>Production MCP server</li>
-        <li>Test suite + documentation</li>
-        <li>7-10 business days</li>
-      </ul>
-      <a href="#contact" class="cta-secondary" style="display:block; text-align:center;">Get Started</a>
-    </div>
-  </div>
-
-  <div class="hire-grid" style="margin-top:80px;">
-    <div class="reveal">
-      <h3 class="section-title" style="font-size:1.4rem;">Tech Stack</h3>
-      <div class="tech-grid">
-        <div class="tech-item">
-          <div class="tech-name">JavaScript / TypeScript</div>
-          <div class="tech-desc">Vanilla JS, Node.js, Express, Electron renderer processes</div>
-        </div>
-        <div class="tech-item">
-          <div class="tech-name">Python</div>
-          <div class="tech-desc">FastAPI, asyncio, SQLite, vector embeddings, MCP servers</div>
-        </div>
-        <div class="tech-item">
-          <div class="tech-name">Local AI</div>
-          <div class="tech-desc">Ollama, RAG pipelines, vector search, semantic chunking</div>
-        </div>
-        <div class="tech-item">
-          <div class="tech-name">MCP & Tooling</div>
-          <div class="tech-desc">Model Context Protocol, Glama registry, custom tool servers</div>
-        </div>
-        <div class="tech-item">
-          <div class="tech-name">Security</div>
-          <div class="tech-desc">WebCrypto PBKDF2/SHA-256, XSS sanitization, adversarial testing</div>
-        </div>
-        <div class="tech-item">
-          <div class="tech-name">DevOps</div>
-          <div class="tech-desc">GitHub Actions CI, zero-dependency deploys, static hosting</div>
-        </div>
-        <div class="tech-item">
-          <div class="tech-name">Smart Contracts</div>
-          <div class="tech-desc">Solidity, Hardhat, 141/141 adversarial test coverage</div>
-        </div>
-        <div class="tech-item">
-          <div class="tech-name">Desktop Apps</div>
-          <div class="tech-desc">Electron, Monaco Editor, terminal integration, keyboard shortcuts</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="contact-section reveal" id="contact">
-      <h3 class="section-title" style="font-size:1.4rem; margin-bottom:24px;">Contact</h3>
-      <p style="color:var(--text-muted); margin-bottom:20px;">Not a salesman — just want to build useful things. Tell me what you need.</p>
-      <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <input type="text" name="name" placeholder="Your name" required>
-        <input type="email" name="email" placeholder="your@email.com" required>
-        <select name="project" required>
-          <option value="">Select a package...</option>
-          <option value="audit">Privacy Tech Audit</option>
-          <option value="pilot">Local AI Pilot</option>
-          <option value="mcp">MCP Server Build</option>
-          <option value="other">Something else</option>
-        </select>
-        <textarea name="message" placeholder="Tell me about your project..." required></textarea>
-        <button type="submit">SEND MESSAGE</button>
-      </form>
-      <div class="contact-info">
-        <p>Or email directly:
-          <a href="mailto:vrtxomega@pm.me">vrtxomega@pm.me</a>
-          <button class="copy-btn" onclick="copyEmail()">Copy</button>
-        </p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/RJlopezAI" target="_blank">linkedin.com/in/RJlopezAI</a></p>
-        <p>GitHub: <a href="https://github.com/VrtxOmega" target="_blank">github.com/VrtxOmega</a></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ FOOTER ═══ -->
-<footer>
-  <div class="footer-logo"><span class="omega-mark">Ω</span> VERITAS</div>
-  <p class="footer-tag">Sovereign AI Infrastructure — Built with Conviction</p>
-  <div class="footer-links">
-    <a href="https://github.com/VrtxOmega" target="_blank">
-      <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor;vertical-align:-2px;margin-right:6px;"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub
-    </a>
-    <a href="https://linkedin.com/in/RJlopezAI" target="_blank">
-      <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor;vertical-align:-2px;margin-right:6px;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn
-    </a>
-    <a href="https://x.com/RJlopezAI" target="_blank">X / Twitter</a>
-    <a href="mailto:vrtxomega@pm.me">Email</a>
-  </div>
-  <p class="copyright">© 2026 RJ (VrtxOmega). All code written with conviction. Built on a laptop.</p>
-</footer>
-
-<script src="js/app.js"></script>
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>
