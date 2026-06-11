@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="RJ Lopez — Builder-Operator. Verification-first origin story and six proof points across local-first tools, Android agent surfaces, Linux systems, Tailscale, YubiKey, and Python.">
+    <meta name="description" content="RJ Lopez — Builder-Operator. Verification-first origin story, six shipped proof points, and external evidence: ShellCheck and Amber merged upstream contributions, codex-desktop-linux accepted PRs, and a formal Sibyl Memory Plugin beta QA deliverable.">
     <link rel="canonical" href="https://vrtxomega.github.io/veritas-portfolio/">
     <meta property="og:title" content="RJ Lopez — Builder-Operator">
-    <meta property="og:description" content="The Clause of Chaos origin and six proof points including the Hermes Agent Mobile Companion, Breakaway, Shell Trials, Omega SMC, coders-bible, and YubiKey/Tailscale mesh.">
+    <meta property="og:description" content="The Clause of Chaos origin, six shipped proof points, and external evidence: merged upstream contributions to ShellCheck and Amber, accepted codex-desktop-linux PRs, and a formal Sibyl beta QA report.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vrtxomega.github.io/veritas-portfolio/">
     <meta property="og:image" content="https://vrtxomega.github.io/veritas-portfolio/assets/breakaway.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="RJ Lopez — Builder-Operator">
-    <meta name="twitter:description" content="The Clause of Chaos origin and six proof points including the Hermes Agent Mobile Companion, Breakaway, Shell Trials, Omega SMC, coders-bible, and YubiKey/Tailscale mesh.">
+    <meta name="twitter:description" content="The Clause of Chaos origin, six shipped proof points, and external evidence: merged upstream contributions to ShellCheck and Amber, accepted codex-desktop-linux PRs, and a formal Sibyl beta QA report.">
     <meta name="twitter:image" content="https://vrtxomega.github.io/veritas-portfolio/assets/breakaway.jpg">
     <title>RJ Lopez — Builder-Operator</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -112,7 +112,8 @@
                 Former cleanroom tech → self-taught Linux builder.
             </p>
             <div class="mt-5 flex flex-wrap gap-2.5 text-[12px] md:text-[13px] text-neutral-300">
-                <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">6 proof points</span>
+                <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">6 shipped proof points</span>
+                <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">4 external evidence items</span>
                 <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">Linux-first</span>
                 <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">local-first</span>
                 <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">Android/Kotlin</span>
@@ -138,7 +139,7 @@
                 <div class="md:col-span-4 md:border-l md:border-white/10 md:pl-6">
                     <h2 class="mono text-[11px] uppercase text-neutral-500 mb-3">Open-source proof</h2>
                     <p class="text-[14px] leading-relaxed text-neutral-300">
-                        Upstream contributor to Linux desktop compatibility and Pop!_OS workflow fixes, with review-friendly PR discipline and reproducible verification notes.
+                        Merged upstream contributions to <a href="https://github.com/koalaman/shellcheck/pull/3484" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">ShellCheck</a> and <a href="https://github.com/amber-lang/amber/pull/1116" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">Amber</a>, plus accepted external contributions to <a href="https://github.com/ilysenko/codex-desktop-linux" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">codex-desktop-linux</a>. Contributions are kept narrow through a review-readiness workflow and reproducible verification notes.
                     </p>
                 </div>
             </div>
@@ -487,6 +488,193 @@
                     </div>
                 </div>
             </article>
+        </section>
+
+        <!-- Proof of Work: upstream & QA -->
+        <section class="border-t border-white/10 pt-10 md:pt-12 pb-8 md:pb-10 mb-4">
+            <div class="mb-8 md:mb-10">
+                <h2 class="text-[24px] md:text-[30px] font-semibold leading-snug">Proof of Work — upstream &amp; QA</h2>
+                <p class="text-[15px] text-neutral-400 mt-3 max-w-[720px] leading-relaxed">
+                    External evidence outside my own repos: merged upstream contributions, accepted external contributions to a tool people actually use, and a formal beta QA deliverable for agent memory.
+                </p>
+            </div>
+
+            <div class="space-y-6 md:space-y-8">
+
+            <!-- OS-1. ShellCheck -->
+            <article class="card rounded-[24px] p-6 md:p-8 lg:p-10 group">
+                <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+                    <div class="lg:col-span-7 min-w-0">
+                        <div class="flex items-start gap-4 mb-5">
+                            <span class="mono text-[13px] accent-gold mt-1.5 shrink-0">OS-1</span>
+                            <div>
+                                <h3 class="text-[22px] md:text-[26px] font-semibold leading-snug">ShellCheck — merged upstream contribution</h3>
+                                <p class="text-[15px] text-neutral-400 mt-2.5 leading-relaxed">koalaman/shellcheck · <a href="https://github.com/koalaman/shellcheck/pull/3484" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">PR #3484</a> · merged into master</p>
+                            </div>
+                        </div>
+                        <div class="ml-0 lg:ml-[28px]">
+                            <div class="ascii-box rounded-xl p-4 md:p-5">
+                                <p class="text-[14px] leading-[1.65] text-neutral-300">
+                                    Narrow fix for SC2030/SC2031 false positives on the special shell variable <span class="mono text-[#22d3ee]">$_</span> / discard variable <span class="mono text-[#22d3ee]">_</span>. Accepted into a respected developer-tooling project with Docker-backed Cabal tests and a one-file diff.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 min-w-0 lg:pl-6 lg:border-l lg:border-white/[0.06]">
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="mono text-[11px] uppercase tracking-[0.14em] accent-cyan mb-3">What it proves</h4>
+                                <p class="text-[14px] leading-[1.65] text-neutral-300">Real upstream contribution to a widely used static-analysis tool, not a fork-only patch.</p>
+                            </div>
+                            <div>
+                                <h4 class="mono text-[11px] uppercase tracking-[0.14em] accent-gold mb-3">Evidence</h4>
+                                <p class="text-[14px] leading-[1.65] text-neutral-300"><a href="https://github.com/koalaman/shellcheck/pull/3484" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">github.com/koalaman/shellcheck/pull/3484</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- OS-2. Amber -->
+            <article class="card rounded-[24px] p-6 md:p-8 lg:p-10 group">
+                <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+                    <div class="lg:col-span-7 min-w-0">
+                        <div class="flex items-start gap-4 mb-5">
+                            <span class="mono text-[13px] accent-gold mt-1.5 shrink-0">OS-2</span>
+                            <div>
+                                <h3 class="text-[22px] md:text-[26px] font-semibold leading-snug">Amber — merged upstream contribution</h3>
+                                <p class="text-[15px] text-neutral-400 mt-2.5 leading-relaxed">amber-lang/amber · <a href="https://github.com/amber-lang/amber/pull/1116" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">PR #1116</a> · merged into staging</p>
+                            </div>
+                        </div>
+                        <div class="ml-0 lg:ml-[28px]">
+                            <div class="ascii-box rounded-xl p-4 md:p-5">
+                                <p class="text-[14px] leading-[1.65] text-neutral-300">
+                                    ShellCheck-related generated-shell output fix: add <span class="mono text-[#22d3ee]">-r</span> to shell version prelude reads (SC2162). Scoped through ShellCheck findings and a Premature Contribution Firewall review-readiness workflow so the PR stayed narrow, validated, and reviewable.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 min-w-0 lg:pl-6 lg:border-l lg:border-white/[0.06]">
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="mono text-[11px] uppercase tracking-[0.14em] accent-cyan mb-3">What it proves</h4>
+                                <p class="text-[14px] leading-[1.65] text-neutral-300">Maintainer-friendly open-source discipline: one warning class, reproducible before/after ShellCheck output, no drive-by cleanup.</p>
+                            </div>
+                            <div>
+                                <h4 class="mono text-[11px] uppercase tracking-[0.14em] accent-gold mb-3">Evidence</h4>
+                                <p class="text-[14px] leading-[1.65] text-neutral-300"><a href="https://github.com/amber-lang/amber/pull/1116" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">github.com/amber-lang/amber/pull/1116</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- OS-3. codex-desktop-linux -->
+            <article class="card rounded-[24px] p-6 md:p-8 lg:p-10 group">
+                <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+                    <div class="lg:col-span-7 min-w-0">
+                        <div class="flex items-start gap-4 mb-5">
+                            <span class="mono text-[13px] accent-gold mt-1.5 shrink-0">OS-3</span>
+                            <div>
+                                <h3 class="text-[22px] md:text-[26px] font-semibold leading-snug">codex-desktop-linux — accepted external contributions</h3>
+                                <p class="text-[15px] text-neutral-400 mt-2.5 leading-relaxed">Unofficial Linux port of Codex Desktop · multiple merged PRs</p>
+                            </div>
+                        </div>
+                        <div class="ml-0 lg:ml-[28px]">
+                            <div class="ascii-box rounded-xl p-4 md:p-5">
+                                <p class="text-[14px] leading-[1.65] text-neutral-300 mb-4">
+                                    Accepted external contributions improving the Linux / Pop!_OS 24.04 experience and packaging/install flow for a tool I use daily — not just my own repos.
+                                </p>
+                                <ul class="space-y-2 text-[14px] leading-[1.65] text-neutral-300">
+                                    <li><a href="https://github.com/ilysenko/codex-desktop-linux/pull/302" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">PR #302</a> — Wayland GPU rendering profile for COSMIC / Pop!_OS</li>
+                                    <li><a href="https://github.com/ilysenko/codex-desktop-linux/pull/236" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">PR #236</a> — GitHub CLI auth workaround docs for isolated XDG / DBus keyring paths</li>
+                                </ul>
+                            </div>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] mono text-neutral-300">Pop!_OS 24.04</span>
+                                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] mono text-neutral-300">Wayland</span>
+                                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] mono text-neutral-300">packaging</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 min-w-0 lg:pl-6 lg:border-l lg:border-white/[0.06]">
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="mono text-[11px] uppercase tracking-[0.14em] accent-cyan mb-3">What it proves</h4>
+                                <p class="text-[14px] leading-[1.65] text-neutral-300">Work accepted into an external desktop tool with real users, focused on Linux compatibility and operator-facing install/docs friction.</p>
+                            </div>
+                            <div>
+                                <h4 class="mono text-[11px] uppercase tracking-[0.14em] accent-gold mb-3">Evidence</h4>
+                                <p class="text-[14px] leading-[1.65] text-neutral-300"><a href="https://github.com/ilysenko/codex-desktop-linux" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">github.com/ilysenko/codex-desktop-linux</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- OS-4. Sibyl beta QA -->
+            <article class="card rounded-[24px] p-6 md:p-8 lg:p-10 group">
+                <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+                    <div class="lg:col-span-7 min-w-0">
+                        <div class="flex items-start gap-4 mb-5">
+                            <span class="mono text-[13px] accent-gold mt-1.5 shrink-0">OS-4</span>
+                            <div>
+                                <h3 class="text-[22px] md:text-[26px] font-semibold leading-snug">Sibyl Memory Plugin — formal beta QA deliverable</h3>
+                                <p class="text-[15px] text-neutral-400 mt-2.5 leading-relaxed">Local-first agent memory evaluation · isolated sandbox · 2026-06-11</p>
+                            </div>
+                        </div>
+                        <div class="ml-0 lg:ml-[28px]">
+                            <div class="ascii-box rounded-xl p-4 md:p-5">
+                                <p class="text-[14px] leading-[1.65] text-neutral-300 mb-4">
+                                    Formal beta test deliverable covering install/setup, local storage, touched configs, data movement, Hermes integration, memory behavior, trust/control, bugs, and recommendations. Production Hermes, Omega Brain, and host memory were not exposed.
+                                </p>
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                    <div class="rounded-lg border border-white/10 bg-black/40 p-3 text-center">
+                                        <div class="text-[20px] font-semibold accent-cyan">11/11</div>
+                                        <div class="mono text-[10px] uppercase tracking-wide text-neutral-500 mt-1">Hermes chats</div>
+                                    </div>
+                                    <div class="rounded-lg border border-white/10 bg-black/40 p-3 text-center">
+                                        <div class="text-[20px] font-semibold accent-gold">0</div>
+                                        <div class="mono text-[10px] uppercase tracking-wide text-neutral-500 mt-1">net syscalls</div>
+                                    </div>
+                                    <div class="rounded-lg border border-white/10 bg-black/40 p-3 text-center">
+                                        <div class="text-[20px] font-semibold text-neutral-200">FREE</div>
+                                        <div class="mono text-[10px] uppercase tracking-wide text-neutral-500 mt-1">cap verified</div>
+                                    </div>
+                                    <div class="rounded-lg border border-white/10 bg-black/40 p-3 text-center">
+                                        <div class="text-[20px] font-semibold text-neutral-200">1</div>
+                                        <div class="mono text-[10px] uppercase tracking-wide text-neutral-500 mt-1">bug found</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <a href="./assets/Sibyl-Memory-Plugin-Beta-Test-Report.pdf" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[13px] mono text-neutral-300 hover:border-[#22d3ee]/50 hover:text-neutral-100 transition-colors" target="_blank" rel="noopener">
+                                    Sibyl-Memory-Plugin-Beta-Test-Report.pdf
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 min-w-0 lg:pl-6 lg:border-l lg:border-white/[0.06]">
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="mono text-[11px] uppercase tracking-[0.14em] accent-cyan mb-3">Key results</h4>
+                                <ul class="space-y-2 text-[14px] leading-[1.65] text-neutral-300">
+                                    <li>Isolated sandbox; production stacks not exposed</li>
+                                    <li>Memory operations verified local — 0 network syscalls on remember/search (strace)</li>
+                                    <li>FREE tier cap enforcement verified; status/dashboard crash once DB exceeds cap (real bug)</li>
+                                    <li>Recommendations: sandbox docs, DB path documentation, migrate warnings, read-only CLI memory commands</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="mono text-[11px] uppercase tracking-[0.14em] accent-gold mb-3">Failure mode</h4>
+                                <p class="text-[14px] leading-[1.65] text-neutral-300">Dual DB paths (CLI vs Hermes adapter) do not auto-unify; documented as a trust/control finding, not silently assumed.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            </div>
         </section>
 
         <!-- Future Architecture -->
