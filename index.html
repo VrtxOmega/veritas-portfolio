@@ -131,7 +131,7 @@
             </p>
             <div class="mt-5 flex flex-wrap gap-2.5 text-[12px] md:text-[13px] text-neutral-300">
                 <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">6 shipped proof points</span>
-                <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">7 merged external PRs</span>
+                <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">11 merged external PRs</span>
                 <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">1 formal QA report</span>
                 <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">Linux-first</span>
                 <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">local-first</span>
@@ -158,7 +158,7 @@
                 <div class="md:col-span-4 md:border-l md:border-white/10 md:pl-6">
                     <h2 class="mono text-[11px] uppercase text-neutral-500 mb-3">Open-source proof</h2>
                     <p class="text-[14px] leading-relaxed text-neutral-300">
-                        Seven merged external PRs outside my own repos — two before PCF (<a href="https://github.com/ilysenko/codex-desktop-linux" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">codex-desktop-linux</a>), five upstream after adopting <a href="https://github.com/VrtxOmega/premature-contribution-firewall" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">PCF</a> (<a href="https://github.com/koalaman/shellcheck/pull/3484" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">ShellCheck</a>, <a href="https://github.com/amber-lang/amber/pull/1116" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">Amber</a>, <a href="https://github.com/ansvisor/ansvisor/pull/235" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">Ansvisor #235</a>, <a href="https://github.com/ansvisor/ansvisor/pull/237" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">#237</a>, <a href="https://github.com/annotorious/annotorious/pull/610" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">Annotorious #610</a>). Earlier: ~20–30 upstream attempts with a low merge rate across ~86 total PRs, most on my own accounts.
+                        Eleven merged external PRs outside my own repos: three <a href="https://github.com/ilysenko/codex-desktop-linux" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">codex-desktop-linux</a> fixes, two <a href="https://github.com/punkpeye/awesome-mcp-servers" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">awesome-mcp-servers</a> directory merges, and six maintainer-facing fixes across <a href="https://github.com/karakeep-app/karakeep/pull/2863" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">Karakeep</a>, <a href="https://github.com/annotorious/annotorious/pull/610" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">Annotorious</a>, <a href="https://github.com/ansvisor/ansvisor/pull/235" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">Ansvisor</a>, <a href="https://github.com/amber-lang/amber/pull/1116" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">Amber</a>, and <a href="https://github.com/koalaman/shellcheck/pull/3484" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">ShellCheck</a>.
                     </p>
                 </div>
             </div>
@@ -474,8 +474,40 @@
                     External evidence outside my own repos: merged upstream contributions, accepted external contributions to a tool people actually use, and a formal beta QA deliverable for agent memory.
                 </p>
                 <p class="text-[14px] text-neutral-400 mt-3 max-w-[720px] leading-relaxed">
-                    Before <a href="https://github.com/VrtxOmega/premature-contribution-firewall" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">PCF</a> (Premature Contribution Firewall), I had roughly 20–30 serious upstream attempts and only two merged external PRs — both to <a href="https://github.com/ilysenko/codex-desktop-linux" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">codex-desktop-linux</a>. My total PR count is much higher (~86), but most of those are on my own accounts, not third-party repos. Since adopting PCF: five upstream merges (four on 2026-06-11, <a href="https://github.com/annotorious/annotorious/pull/610" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">Annotorious #610</a> on 2026-06-12) plus the two earlier codex merges — seven pieces of external merge evidence. The difference is not volume — it is gating overlap, issue fit, and review-readiness before opening.
+                    Live GitHub readback now shows 11 merged external PRs outside my own repos: 3 Codex Desktop Linux merges, 2 awesome-mcp-servers directory merges, and 6 maintainer-facing fixes across Karakeep, Annotorious, Ansvisor, Amber, and ShellCheck. The difference is not volume — it is gating overlap, issue fit, and review-readiness before opening.
                 </p>
+            </div>
+
+            <div class="ascii-box rounded-xl p-4 md:p-5 mb-8">
+                <h3 class="mono text-[11px] uppercase tracking-[0.14em] accent-cyan mb-4">Current external merge ledger</h3>
+                <div class="grid md:grid-cols-3 gap-5">
+                    <div>
+                        <div class="mono text-[12px] accent-gold mb-2">Codex Desktop Linux · 3</div>
+                        <ul class="space-y-1.5 text-[13px] leading-[1.6] text-neutral-300">
+                            <li><a href="https://github.com/ilysenko/codex-desktop-linux/pull/495" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">#495</a> — Linux feature parity for Codex 26.609</li>
+                            <li><a href="https://github.com/ilysenko/codex-desktop-linux/pull/302" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">#302</a> — Wayland GPU rendering profile</li>
+                            <li><a href="https://github.com/ilysenko/codex-desktop-linux/pull/236" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">#236</a> — GitHub CLI auth workaround docs</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="mono text-[12px] accent-gold mb-2">Maintainer fixes · 6</div>
+                        <ul class="space-y-1.5 text-[13px] leading-[1.6] text-neutral-300">
+                            <li><a href="https://github.com/karakeep-app/karakeep/pull/2863" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">Karakeep #2863</a> — IPv6 host resolution</li>
+                            <li><a href="https://github.com/annotorious/annotorious/pull/610" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">Annotorious #610</a> — polygon tolerance option</li>
+                            <li><a href="https://github.com/ansvisor/ansvisor/pull/237" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">Ansvisor #237</a> — prompt-detail grouping</li>
+                            <li><a href="https://github.com/ansvisor/ansvisor/pull/235" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">Ansvisor #235</a> — insights grouping</li>
+                            <li><a href="https://github.com/amber-lang/amber/pull/1116" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">Amber #1116</a> — generated shell read fix</li>
+                            <li><a href="https://github.com/koalaman/shellcheck/pull/3484" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">ShellCheck #3484</a> — discard-variable warning fix</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="mono text-[12px] accent-gold mb-2">Directory proof · 2</div>
+                        <ul class="space-y-1.5 text-[13px] leading-[1.6] text-neutral-300">
+                            <li><a href="https://github.com/punkpeye/awesome-mcp-servers/pull/4922" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">awesome-mcp-servers #4922</a> — Ollama-Omega</li>
+                            <li><a href="https://github.com/punkpeye/awesome-mcp-servers/pull/4539" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">awesome-mcp-servers #4539</a> — omega-brain-mcp</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <div class="space-y-6 md:space-y-8">
@@ -639,15 +671,16 @@
                             <span class="mono text-[13px] accent-gold mt-1.5 shrink-0">OS-5</span>
                             <div>
                                 <h3 class="text-[22px] md:text-[26px] font-semibold leading-snug">codex-desktop-linux — accepted external contributions</h3>
-                                <p class="text-[15px] text-neutral-400 mt-2.5 leading-relaxed">Unofficial Linux port of Codex Desktop · multiple merged PRs</p>
+                                <p class="text-[15px] text-neutral-400 mt-2.5 leading-relaxed">Unofficial Linux port of Codex Desktop · 3 merged PRs</p>
                             </div>
                         </div>
                         <div class="ml-0 lg:ml-[28px]">
                             <div class="ascii-box rounded-xl p-4 md:p-5">
                                 <p class="text-[14px] leading-[1.65] text-neutral-300 mb-4">
-                                    Accepted external contributions improving the Linux / Pop!_OS 24.04 experience and packaging/install flow for a tool I use daily — not just my own repos.
+                                    Accepted external contributions improving the Linux / Pop!_OS 24.04 experience, packaging/install flow, and app-bundle feature parity for a tool I use daily — not just my own repos.
                                 </p>
                                 <ul class="space-y-2 text-[14px] leading-[1.65] text-neutral-300">
+                                    <li><a href="https://github.com/ilysenko/codex-desktop-linux/pull/495" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">PR #495</a> — Linux feature parity for the Codex 26.609 app bundle</li>
                                     <li><a href="https://github.com/ilysenko/codex-desktop-linux/pull/302" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">PR #302</a> — Wayland GPU rendering profile for COSMIC / Pop!_OS</li>
                                     <li><a href="https://github.com/ilysenko/codex-desktop-linux/pull/236" class="text-[#22d3ee] hover:underline" target="_blank" rel="noopener">PR #236</a> — GitHub CLI auth workaround docs for isolated XDG / DBus keyring paths</li>
                                 </ul>
@@ -663,7 +696,7 @@
                         <div class="space-y-6">
                             <div>
                                 <h4 class="mono text-[11px] uppercase tracking-[0.14em] accent-cyan mb-3">What it proves</h4>
-                                <p class="text-[14px] leading-[1.65] text-neutral-300">Work accepted into an external desktop tool with real users, focused on Linux compatibility and operator-facing install/docs friction.</p>
+                                <p class="text-[14px] leading-[1.65] text-neutral-300">Work accepted into an external desktop tool with real users, focused on Linux compatibility, feature parity, and operator-facing install/docs friction.</p>
                             </div>
                             <div>
                                 <h4 class="mono text-[11px] uppercase tracking-[0.14em] accent-gold mb-3">Evidence</h4>
