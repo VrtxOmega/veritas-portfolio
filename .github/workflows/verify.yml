@@ -1,0 +1,16 @@
+name: Verify portfolio
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify portfolio proof points
+        run: python3 tests/verify_portfolio.py
