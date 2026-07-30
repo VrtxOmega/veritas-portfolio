@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Verify the Trust Lab portfolio proof point without external dependencies.
 
-Before this change, the portfolio advertised six shipped proof points and had
-no VERITAS Agent Trust Lab card. After this change, it must advertise seven,
-link the live lab, source, and release, retain the INCONCLUSIVE independence
-boundary, and describe the fixed-price pilot without inflating adoption.
+The portfolio must advertise seven shipped proof points; link the live lab,
+source, and release; report the canonical 6/50 campaign state; retain the
+INCONCLUSIVE efficacy and adoption boundary; and describe the fixed-price pilot
+without inflating the scoped outside actions.
 """
 
 from html.parser import HTMLParser
@@ -34,7 +34,12 @@ parser.close()
 required_text = (
     "7 shipped proof points",
     "VERITAS Omega Agent Trust Lab",
-    "14 passing tests",
+    "43 passing tests",
+    "6/50 scoped independent actions",
+    "six distinct validators",
+    "44 remaining",
+    "$0 verified payment",
+    "do not establish broad adoption, product efficacy, endorsement, certification, or payment",
     "$750",
     "INCONCLUSIVE",
 )
@@ -51,5 +56,6 @@ for link in required_links:
     assert link in parser.hrefs, f"missing required portfolio link: {link}"
 
 assert "6 shipped proof points" not in html, "stale proof-point count remains"
+assert "14 passing tests" not in html, "stale Trust Lab test count remains"
 
 print("PASS: Trust Lab portfolio proof point and claim boundaries verified")
