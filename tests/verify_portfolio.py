@@ -2,7 +2,8 @@
 """Verify the Trust Lab portfolio proof point without external dependencies.
 
 The portfolio must advertise seven shipped proof points; link the live lab,
-source, and release; report the canonical 7/50 campaign state; retain the
+source, release, and public verifier challenge; report the canonical 9/50
+Protocol v2 campaign state; retain the
 INCONCLUSIVE efficacy and adoption boundary; and describe the fixed-price pilot
 without inflating the scoped outside actions.
 """
@@ -34,11 +35,13 @@ parser.close()
 required_text = (
     "7 shipped proof points",
     "VERITAS Omega Agent Trust Lab",
-    "51 passing tests",
-    "7/50 scoped independent actions",
-    "seven distinct validators",
-    "43 remaining",
-    "$0 verified payment",
+    "56 passing tests",
+    "9/50 scoped outside actions",
+    "nine distinct validators",
+    "41 remaining",
+    "zero independent verifier runs",
+    "$0 settled revenue",
+    "20 direct external PR merges",
     "One review is an unfavorable root-cause rejection, not acceptance",
     "do not establish broad adoption, product efficacy, endorsement, certification, or payment",
     "$750",
@@ -48,6 +51,7 @@ required_links = (
     "https://vrtxomega.github.io/veritas-agent-trust-lab/",
     "https://github.com/VrtxOmega/veritas-agent-trust-lab",
     "https://github.com/VrtxOmega/veritas-agent-trust-lab/releases/tag/v0.1.0",
+    "https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/60",
 )
 
 for text in required_text:
@@ -60,5 +64,7 @@ assert "6 shipped proof points" not in html, "stale proof-point count remains"
 assert "14 passing tests" not in html, "stale Trust Lab test count remains"
 assert "43 passing tests" not in html, "stale Trust Lab test count remains"
 assert "6/50 scoped independent actions" not in html, "stale campaign state remains"
+assert "7/50 scoped independent actions" not in html, "stale campaign state remains"
+assert "15 merged external contributions" not in html, "stale merge count remains"
 
 print("PASS: Trust Lab portfolio proof point and claim boundaries verified")
